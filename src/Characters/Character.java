@@ -21,6 +21,7 @@ public class Character {
     private final List<HealthRelated> healthBoosters;
     private final List<Miscellaneous> miscellaneous;
     private Square position;
+    private boolean isAlive;
 
     public Character(String name, Jobs jobTitle, List<Attributes> attributes, List<Guns> guns,
                   List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous, Square position)  {
@@ -33,6 +34,7 @@ public class Character {
         this.healthBoosters = healthBoosters;
         this.miscellaneous = miscellaneous;
         this.position = position;
+        this.isAlive = true;
     }
 
     public String getName() {
@@ -85,5 +87,13 @@ public class Character {
 
     public void setPosition(Square position) {
         this.position = position;
+    }
+
+
+    public void improveStats() {
+    }
+
+    public boolean isAlive() {
+        return (health > 0);
     }
 }
