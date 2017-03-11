@@ -11,19 +11,25 @@ public class GameState {
     public Square location;
     public int hp;
     public int exp;
-//    public Items.Guns gunEquipped;
-//    public Items.HealthRelated armor;
     public int decisionFinalCounter;
     public Character player;
 
+    public GameState(Square location, int hp, int exp) {
+        this.location = location;
+        this.hp = hp;
+        this.exp = exp;
+    }
+
     public void levelUp(int newExp) {
         if (exp + newExp > 1200) {
-//            player.improveStats();
+//            GameState.improveStats();
         }
         else {
             exp +=newExp;
         }
     }
 
-    public void improveStats(){}
+    public void improveStats(){
+
+    }
 }
