@@ -8,15 +8,23 @@ public class GameMap {
 
   private Square[][] map = new Square[90][160];
 
+  private Square square;
+
   public Square getSquare(int i, int j) {
     return map[i][j];
   }
 
-  public void updateMap(char precedentCharacter, Square currentPosition,
-                                                    Square nextPosition) {
-    map[currentPosition.getX()][currentPosition.getY()]
-        .setC(precedentCharacter);
-    map[nextPosition.getX()][nextPosition.getY()].setC('*');
+  public void setSquare(int x, int y, int a, int b) {
+    map[x][y] = map[x + a][y+b];
+    map[x][y].setC('*');
+  }
+
+  public void updateMap(Square currentPosition, int a, int b) {
+    currentPosition.setSquare(a,b);
+    map[currentPosition.getX()][currentPosition.getY()].setC('*');
+//    map[currentPosition.getX()][currentPosition.getY()]
+//        .setC(precedentCharacter);
+//    map[nextPosition.getX()][nextPosition.getY()].setC('*');
   }
 
   public boolean isValidMove(int i, int j) {
@@ -286,5 +294,7 @@ public class GameMap {
       System.out.println();
     }
   }
+
+
 
 }

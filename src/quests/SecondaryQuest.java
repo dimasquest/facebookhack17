@@ -38,5 +38,5 @@ public class SecondaryQuest extends Quest {
         listofSecQuests.add(findTheRanger);
         listofSecQuests.add(stealTheChems);
     }
-    
+
 }

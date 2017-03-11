@@ -19,6 +19,19 @@ public class Square {
     return c;
   }
 
+  public void setX(int a) {
+    this.x = x + a;
+  }
+
+  public void setY(int b) {
+    this.y = y + b;
+  }
+
+  public void setSquare(int a, int b) {
+    this.x = x + a;
+    this.y = y + b;
+  }
+
   public void setC(char c) {
     this.c = c;
   }
@@ -30,4 +43,5 @@ public class Square {
   public int getY() {
     return y;
   }
+
 }

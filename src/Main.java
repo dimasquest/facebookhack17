@@ -8,8 +8,8 @@ import Items.Miscellaneous;
 import map.GameMap;
 import map.Square;
 import messages.StartStory;
-import org.w3c.dom.Attr;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,8 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args) throws IOException {
     System.out.println("Hello stranger, your journey into the " +
-        "post-apocalptic America is about to begin.\n");
+        "post-apocalptic America is about to begin.\n" +
+            "DISCLAIMER: GAME IS 18+ ONLY");
     System.out.println("Choose your character:\n" +
         "Press enter to start.");
     Scanner user_input = new Scanner(System.in);
@@ -113,11 +114,33 @@ public class Main {
     map.getSquare(89,50).setC('*');
     map.display();
     //moves
-    Square nextPosition = map.getSquare(88, 50);
-    nextCharacter = nextPosition.getC();
-    map.updateMap(precedentCharacter, position, nextPosition);
-    precedentCharacter = nextCharacter;
-    System.out.println("End of test");
+    Square startPosition = map.getSquare(89, 50);
+//    nextCharacter = nextPosition.getC();
+//    map.updateMap(precedentCharacter, position, nextPosition);
+//    precedentCharacter = nextCharacter;
     map.display();
+
+    boolean gameOver = false;
+    while (!gameOver) {
+        user_input.next();
+        if (user_input.toString().equals("w")) {
+            map.setSquare(startPosition.getX(),startPosition.getY(),0,1);
+        }
+        else if (user_input.toString().equals("a")){
+            map.setSquare(startPosition.getX(),startPosition.getY(),-1, 0);
+        }
+        else if (user_input.toString().equals("s")) {
+            map.setSquare(startPosition.getX(),startPosition.getY(),0, -1);
+        }
+        else if (user_input.toString().equals("d")) {
+            map.setSquare(startPosition.getX(),startPosition.getY(),1,0);
+        }
+        map.display();
+        if (gameOver) {
+            break;
+        }
+    }
+
   }
+
 }
