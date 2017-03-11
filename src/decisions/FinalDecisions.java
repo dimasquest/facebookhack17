@@ -4,8 +4,6 @@ package decisions;
  * Created by dimarammfire on 11.03.17.
  */
 public class FinalDecisions {
-    private boolean gameOver;
-
 
     public void finalBattleCheck(int strengthOfTheTown, int raiderStrength, int karma) {
         if (strengthOfTheTown > raiderStrength) {
@@ -23,6 +21,5 @@ public class FinalDecisions {
         else {
             System.out.println("The town is in ruins. Raiders managed to destroy the town hall. All hope is lost...");
         }
-        gameOver = true;
     }
 }

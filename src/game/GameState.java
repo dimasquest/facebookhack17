@@ -22,7 +22,7 @@ public class GameState {
 
     public void levelUp(int newExp) {
         if (exp + newExp > 1200) {
-//            GameState.improveStats();
+            player.improveStats();
         }
         else {
             exp +=newExp;
