@@ -1,7 +1,7 @@
-package npc;
+package Items;
 
 /**
  * Created by codiniosifpacuraru on 11/03/2017.
  */
-public class Friendly {
+public enum Miscellaneous {
 }
