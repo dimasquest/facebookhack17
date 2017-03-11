@@ -6,8 +6,7 @@ package messages;
 public class FriendlyStories extends NPCStories {
 
 
-    public FriendlyStories(String story) {
-        super(story);
+    public FriendlyStories() {
     }
 
     public void showStory() {

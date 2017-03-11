@@ -7,12 +7,6 @@ public abstract class NPCStories {
 
     public String story;
 
-    public NPCStories(String story) {
-        this.story = story;
+    public NPCStories() {
     }
-
-    public void showStory() {
-        System.out.println(story);
-    }
-
 }
