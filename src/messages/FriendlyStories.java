@@ -133,7 +133,8 @@ public class FriendlyStories extends NPCStories {
     }
 
     public void getCit() {
-        cit = "Pablo is a local farmer. Surpriced his house is still standing after the entire raider madness.";
+        cit = "Pablo is a local farmer. Surprised his house is still standing" +
+            " after the entire raider madness.";
         System.out.println(cit);
     }
 
