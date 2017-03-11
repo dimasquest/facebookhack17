@@ -8,6 +8,21 @@ public class GameMap {
 
   private Square[][] map = new Square[90][160];
 
+  public Square getSquare(int i, int j) {
+    return map[i][j];
+  }
+
+  public void updateMap(char precedentCharacter, Square currentPosition,
+                                                    Square nextPosition) {
+    map[currentPosition.getX()][currentPosition.getY()]
+        .setC(precedentCharacter);
+    map[nextPosition.getX()][nextPosition.getY()].setC('*');
+  }
+
+  public boolean isValidMove(int i, int j) {
+    return 0 <= i && i < 90 && 0 <= j && j < 160;
+  }
+
   public GameMap() {
     for (int i = 0; i < 90; i++) {
       for (int j = 0; j < 160; j++) {
@@ -164,7 +179,6 @@ public class GameMap {
     for (int j = 40; j < 50; j++) {
       this.map[80][j].setC('-');
     }
-
 
     // Cemetery
     for (int j = 120; j <= 145; j++) {

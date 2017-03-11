@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by dimarammfire on 11.03.17.
  */
-public abstract class Character {
+public class Character {
 
     private final String name;
     private final Jobs jobTitle;
