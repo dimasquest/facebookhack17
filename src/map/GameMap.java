@@ -6,11 +6,11 @@ package map;
 
 public class GameMap {
 
-  private Square[][] map = new Square[100][100];
+  private Square[][] map = new Square[90][160];
 
   public GameMap() {
-    for (int i = 0; i < 100; i++) {
-      for (int j = 0; j < 100; j++) {
+    for (int i = 0; i < 90; i++) {
+      for (int j = 0; j < 160; j++) {
         this.map[i][j] = new Square(i, j);
       }
     }
@@ -131,7 +131,7 @@ public class GameMap {
     this.map[66][80].setC('S');
     this.map[66][81].setC('E');
 
-    // Road
+    // Roads
     for (int i = 44; i < 70; i++) {
       this.map[i][50].setC('|');
     }
@@ -149,12 +149,124 @@ public class GameMap {
     for (int j = 51; j < 65; j++) {
       this.map[46][j].setC('-');
     }
+    for (int i = 71; i < 90; i++) {
+      this.map[i][50].setC('|');
+    }
+    for (int j = 51; j < 120; j++) {
+      this.map[80][j].setC('-');
+    }
+    for (int i = 50; i < 80; i++) {
+      this.map[i][108].setC('|');
+    }
+    for (int j = 108; j < 120; j++) {
+      this.map[50][j].setC('-');
+    }
+    for (int j = 40; j < 50; j++) {
+      this.map[80][j].setC('-');
+    }
 
+
+    // Cemetery
+    for (int j = 120; j <= 145; j++) {
+      this.map[69][j].setC('-');
+      this.map[85][j].setC('-');
+    }
+    for (int i = 70; i < 85; i ++) {
+      this.map[i][120].setC('|');
+      this.map[i][145].setC('|');
+    }
+    this.map[77][129].setC('C');
+    this.map[77][130].setC('E');
+    this.map[77][131].setC('M');
+    this.map[77][132].setC('E');
+    this.map[77][133].setC('T');
+    this.map[77][134].setC('E');
+    this.map[77][135].setC('R');
+    this.map[77][136].setC('Y');
+
+    // Crosses
+    this.map[71][125].setC('|');
+    this.map[72][125].setC('|');
+    this.map[73][125].setC('|');
+    this.map[71][124].setC('_');
+    this.map[71][126].setC('_');
+
+    this.map[71][140].setC('|');
+    this.map[72][140].setC('|');
+    this.map[73][140].setC('|');
+    this.map[71][139].setC('_');
+    this.map[71][141].setC('_');
+
+    this.map[73][132].setC('|');
+    this.map[74][132].setC('|');
+    this.map[75][132].setC('|');
+    this.map[73][131].setC('_');
+    this.map[73][133].setC('_');
+
+    this.map[81][125].setC('|');
+    this.map[82][125].setC('|');
+    this.map[83][125].setC('|');
+    this.map[81][124].setC('_');
+    this.map[81][126].setC('_');
+
+    this.map[79][132].setC('|');
+    this.map[80][132].setC('|');
+    this.map[81][132].setC('|');
+    this.map[79][131].setC('_');
+    this.map[79][133].setC('_');
+
+    this.map[81][140].setC('|');
+    this.map[82][140].setC('|');
+    this.map[83][140].setC('|');
+    this.map[81][139].setC('_');
+    this.map[81][141].setC('_');
+
+  // Ruins
+    for (int j = 120; j <= 150; j++) {
+      this.map[40][j].setC('-');
+      this.map[60][j].setC('-');
+    }
+    for (int i = 41; i < 60; i ++) {
+      this.map[i][120].setC('|');
+      this.map[i][150].setC('|');
+    }
+    this.map[50][127].setC('R');
+    this.map[50][128].setC('U');
+    this.map[50][129].setC('I');
+    this.map[50][130].setC('N');
+    this.map[50][131].setC('S');
+    this.map[50][132].setC(' ');
+    this.map[50][133].setC('O');
+    this.map[50][134].setC('F');
+    this.map[50][135].setC(' ');
+    this.map[50][136].setC('O');
+    this.map[50][137].setC('L');
+    this.map[50][138].setC('D');
+    this.map[50][139].setC(' ');
+    this.map[50][140].setC('T');
+    this.map[50][141].setC('O');
+    this.map[50][142].setC('W');
+    this.map[50][143].setC('N');
+
+    // Ranch
+    for (int j = 5; j <= 40; j ++) {
+      this.map[75][j].setC('-');
+      this.map[85][j].setC('-');
+    }
+    for (int i = 76; i < 85; i++) {
+      this.map[i][5].setC('|');
+      this.map[i][40].setC('|');
+    }
+    this.map[80][20].setC('R');
+    this.map[80][21].setC('A');
+    this.map[80][22].setC('N');
+    this.map[80][23].setC('C');
+    this.map[80][24].setC('H');
   }
 
   public void display() {
-    for (int i = 0; i < 100; i++) {
-      for (int j = 0; j < 100; j++) {
+    for (int i = 0; i < 90; i++) {
+      for (int j = 0; j < 160; j++) {
         System.out.print(map[i][j].getC());
       }
       System.out.println();
