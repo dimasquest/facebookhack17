@@ -9,8 +9,4 @@ public class FriendlyStories extends NPCStories {
     public FriendlyStories() {
     }
 
-    public void showStory() {
-        System.out.println(story);
-    }
-
 }

@@ -1,5 +1,7 @@
 package messages;
 
+import java.util.Scanner;
+
 /**
  * Created by dimarammfire on 11.03.17.
  */
@@ -12,6 +14,40 @@ public class StartStory {
     private String axelStory;
     private String ciaraStory;
     private String rachelStory;
+
+    public void getStory(int c) {
+        boolean flag = true;
+        while (flag) {
+        switch (c) {
+            case 1:
+                System.out.println("You chose Rohan.");
+                flag = false;
+                break;
+            case 2:
+                System.out.println("You chose Doc.");
+                flag = false;
+                break;
+            case 3:
+                System.out.println("You chose Axel.");
+                flag = false;
+                break;
+            case 4:
+                System.out.println("You chose Ciara.");
+                flag = false;
+                break;
+            case 5:
+                System.out.println("You chose Rachel.");
+                flag = false;
+                break;
+            default:
+                System.out.println("Invalid number");
+                Scanner s = new Scanner(System.in);
+                c = s.nextInt();
+                break;
+        }
+        }
+
+    }
 
     public void getBiStory() {
         System.out.println("Your name is Rohan, you are an ex-ranger commonly known as Big Iron and here is your story:");
