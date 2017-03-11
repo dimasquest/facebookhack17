@@ -110,32 +110,41 @@ public class FriendlyStories extends NPCStories {
         System.out.println(security2);
     }
 
-    public String getWoundedGuard() {
-        return woundedGuard;
+    public void getWoundedGuard() {
+        woundedGuard = "David. Hero. Covered the mayor from the raider last month, still hasnt recovered. He seems to be better than\n" +
+                "when I last saw him.";
+        System.out.println(woundedGuard);
     }
 
-    public String getWoundedGuard2() {
-        return woundedGuard2;
+    public void getWoundedGuard2() {
+        woundedGuard2 = "I don't even know his name. There seems to be very little I could do for him.";
+        System.out.println(woundedGuard2);
     }
 
-    public String getWoundedRanger() {
-        return woundedRanger;
+    public void getWoundedRanger() {
+        woundedRanger = "Orson Krennik, 43 years old. Legend of the wasteland, now lying here unconcious with a hole\n" +
+                "in his liver. Only a specialist could help him now.";
+        System.out.println(woundedRanger);
     }
 
-    public String getWoundedRaider() {
-        return woundedRaider;
+    public void getWoundedRaider() {
+        woundedRaider = "Don't have a clue why didn't the guards finish him. I could do that for them though...";
+        System.out.println(woundedRaider);
     }
 
-    public String getCit() {
-        return cit;
+    public void getCit() {
+        cit = "Pablo is a local farmer. Surpriced his house is still standing after the entire raider madness.";
+        System.out.println(cit);
     }
 
-    public String getCit2() {
-        return cit2;
+    public void getCit2() {
+        cit2 = "That is the guy who let them into the town! I can catch him or run and stop the fire. Fucking hell...";
+        System.out.println(cit2);
     }
 
-    public String getCit3() {
-        return cit3;
+    public void getCit3() {
+        cit3 = "Sandra is Orson's wife. I hope she will be ok after hearing what happened to him...";
+        System.out.println(cit3);
     }
 
     public FriendlyStories() {
