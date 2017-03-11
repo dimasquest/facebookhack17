@@ -3,6 +3,7 @@ package Characters;
 import Items.Guns;
 import Items.HealthRelated;
 import Items.Miscellaneous;
+import map.Square;
 
 import java.util.List;
 
@@ -19,9 +20,10 @@ public abstract class Character {
     private final List<Guns> guns;
     private final List<HealthRelated> healthBoosters;
     private final List<Miscellaneous> miscellaneous;
+    private Square position;
 
     public Character(String name, Jobs jobTitle, List<Attributes> attributes, List<Guns> guns,
-                  List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous)  {
+                  List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous, Square position)  {
         this.name = name;
         this.jobTitle = jobTitle;
         this.health = 100;
@@ -30,6 +32,7 @@ public abstract class Character {
         this.guns = guns;
         this.healthBoosters = healthBoosters;
         this.miscellaneous = miscellaneous;
+        this.position = position;
     }
 
     public String getName() {
@@ -62,15 +65,25 @@ public abstract class Character {
     }
 
     public List<Miscellaneous> getMiscellaneous()
+
     {
         return miscellaneous;
+    }
+
+    public Square getPosition() {
+        return position;
     }
 
     public void setHealth(int health) {
         this.health = health;
     }
 
-    public void setGunInHand(Guns gunInHand) {
+    public void setGunInHand(Guns gunInHand)
+    {
         this.gunInHand = gunInHand;
+    }
+
+    public void setPosition(Square position) {
+        this.position = position;
     }
 }
