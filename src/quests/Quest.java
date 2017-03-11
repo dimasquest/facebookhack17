@@ -7,11 +7,13 @@ public abstract class Quest {
     public String name;
     public int expGained;
     public Type type;
-    public Description description;
+    public String description;
+    public boolean isCompleted;
 
-    public Quest(String name, int expGained, Description description) {
+    public Quest(String name, int expGained, String description) {
         this.name = name;
         this.expGained = expGained;
         this.description = description;
+        isCompleted = false;
     }
 }

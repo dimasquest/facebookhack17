@@ -7,13 +7,20 @@ import java.util.Scanner;
  */
 public class StartStory {
 
-    public StartStory(){}
+    public String getName() {
+        return name;
+    }
+
+    public StartStory(){
+
+    }
 
     private String biStory;
     private String docStory;
     private String axelStory;
     private String ciaraStory;
     private String rachelStory;
+    public String name;
 
     public void getStory(int c) {
         boolean flag = true;
@@ -22,22 +29,27 @@ public class StartStory {
             case 1:
                 System.out.println("You chose Rohan.");
                 flag = false;
+                this.name = "Rohan";
                 break;
             case 2:
                 System.out.println("You chose Doc.");
                 flag = false;
+                this.name = "Harp";
                 break;
             case 3:
                 System.out.println("You chose Axel.");
                 flag = false;
+                this.name = "Axel";
                 break;
             case 4:
                 System.out.println("You chose Ciara.");
                 flag = false;
+                this.name = "Ciara";
                 break;
             case 5:
                 System.out.println("You chose Rachel.");
                 flag = false;
+                this.name = "Rachel";
                 break;
             default:
                 System.out.println("Invalid number");
@@ -61,6 +73,7 @@ public class StartStory {
                 "someone in the town told you that raiders are planning to take over and mayor is happy for them to do so.\n" +
                 "Its only up to you to prevent that from happening. Get the Big Iron on your hip and prepare for the long journey Ranger.";
         System.out.println(biStory);
+
     }
 
     public void getDocStory() {
@@ -73,6 +86,7 @@ public class StartStory {
                 "someone in the town told you that raiders are planning to take over and mayor is happy for them to do so.\n" +
                 "Doc, you are meant to help people in any way possible. Would you murder to save your community?";
         System.out.println(docStory);
+
     }
 
     public void getAxelStory() {
@@ -87,6 +101,7 @@ public class StartStory {
                 "has changed your plans... " + "someone in the town told you that raiders are planning to take over and mayor is happy for them to do so. \n" +
                 "Could you turn against those monsters once again if that saves your new family, Axel?";
         System.out.println(axelStory);
+
     }
 
     public void getCiaraStory() {
@@ -101,6 +116,7 @@ public class StartStory {
                 "have disappeard, except for your personal death squadron of course. Are you ready to do your job Ciara? Even if by protecting the \n" +
                 "others you are risking your own life?";
         System.out.println(ciaraStory);
+
     }
 
     public void getRachelStory() {
@@ -114,5 +130,6 @@ public class StartStory {
                 "of your laboratory. Turns out that these bastards got closer than you could have expected. They are attacking the front gate of Galom.\n" +
                 "What would you do Rachel? Save the results of your experiments or go for saving people outside of your precious lab?";
         System.out.println(rachelStory);
+
     }
 }
