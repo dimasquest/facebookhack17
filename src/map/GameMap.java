@@ -8,22 +8,12 @@ public class GameMap {
 
   private Square[][] map = new Square[90][160];
 
-  private Square square;
-
   public Square getSquare(int i, int j) {
     return map[i][j];
   }
 
   public void setSquare(int x, int y, int a, int b) {
     map[x + a][y+b].setC('*');
-  }
-
-  public void updateMap(Square currentPosition, int a, int b) {
-    currentPosition.setSquare(a,b);
-    map[currentPosition.getX()][currentPosition.getY()].setC('*');
-//    map[currentPosition.getX()][currentPosition.getY()]
-//        .setC(precedentCharacter);
-//    map[nextPosition.getX()][nextPosition.getY()].setC('*');
   }
 
   public boolean isValidMove(int i, int j) {
