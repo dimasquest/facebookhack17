@@ -15,8 +15,7 @@ public class GameMap {
   }
 
   public void setSquare(int x, int y, int a, int b) {
-    map[x][y] = map[x + a][y+b];
-    map[x][y].setC('*');
+    map[x + a][y+b].setC('*');
   }
 
   public void updateMap(Square currentPosition, int a, int b) {

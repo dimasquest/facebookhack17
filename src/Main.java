@@ -9,7 +9,6 @@ import map.GameMap;
 import map.Square;
 import messages.StartStory;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class Main {
   public static void main(String[] args) throws IOException {
     System.out.println("Hello stranger, your journey into the " +
         "post-apocalptic America is about to begin.\n" +
-            "DISCLAIMER: GAME IS 18+ ONLY");
+        "DISCLAIMER: GAME IS 18+ ONLY");
     System.out.println("Choose your character:\n" +
         "Press enter to start.");
     Scanner user_input = new Scanner(System.in);
@@ -43,7 +42,7 @@ public class Main {
 
     GameMap map = new GameMap();
     Character player;
-    char precedentCharacter, nextCharacter;
+    char previousChar, nextCharacter;
 
     List<Attributes> attributes = new ArrayList<>();
     attributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
@@ -58,7 +57,7 @@ public class Main {
     List<Miscellaneous> miscellaneous = new ArrayList<>();
 
     Square position = map.getSquare(89, 50);
-    precedentCharacter = position.getC();
+    previousChar = '|';
 
     int n = user_input.nextInt();
     story.getStory(n);
@@ -111,34 +110,43 @@ public class Main {
         player = new Character("Rachel", Jobs.PLAYER, attributes, guns,
             healthBoosters, miscellaneous, position);
     }
-    map.getSquare(89,50).setC('*');
-    map.display();
-    //moves
-    Square startPosition = map.getSquare(89, 50);
-//    nextCharacter = nextPosition.getC();
-//    map.updateMap(precedentCharacter, position, nextPosition);
-//    precedentCharacter = nextCharacter;
+    map.getSquare(89, 50).setC('*');
     map.display();
 
     boolean gameOver = false;
     while (!gameOver) {
-        user_input.next();
-        if (user_input.toString().equals("w")) {
-            map.setSquare(startPosition.getX(),startPosition.getY(),0,1);
-        }
-        else if (user_input.toString().equals("a")){
-            map.setSquare(startPosition.getX(),startPosition.getY(),-1, 0);
-        }
-        else if (user_input.toString().equals("s")) {
-            map.setSquare(startPosition.getX(),startPosition.getY(),0, -1);
-        }
-        else if (user_input.toString().equals("d")) {
-            map.setSquare(startPosition.getX(),startPosition.getY(),1,0);
-        }
-        map.display();
-        if (gameOver) {
-            break;
-        }
+      String move = user_input.next();
+      map.getSquare(position.getX(), position.getY()).setC(previousChar);
+      switch (move) {
+        case "w":
+          previousChar = map.getSquare(position.getX() - 1, position.getY())
+              .getC();
+          map.setSquare(position.getX(), position.getY(), -1, 0);
+          position = map.getSquare(position.getX() - 1, position.getY());
+          break;
+        case "a":
+          previousChar = map.getSquare(position.getX(), position.getY() - 1)
+              .getC();
+          map.setSquare(position.getX(), position.getY(), 0, -1);
+          position = map.getSquare(position.getX(), position.getY() - 1);
+          break;
+        case "s":
+          previousChar = map.getSquare(position.getX() + 1, position.getY())
+              .getC();
+          map.setSquare(position.getX(), position.getY(), 1, 0);
+          position = map.getSquare(position.getX() + 1, position.getY());
+          break;
+        case "d":
+          previousChar = map.getSquare(position.getX(), position.getY() + 1)
+              .getC();
+          map.setSquare(position.getX(), position.getY(), 0, 1);
+          position = map.getSquare(position.getX(), position.getY() + 1);
+          break;
+      }
+      map.display();
+      if (gameOver) {
+        break;
+      }
     }
 
   }
