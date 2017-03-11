@@ -1,0 +1,76 @@
+package Characters;
+
+import Items.Guns;
+import Items.HealthRelated;
+import Items.Miscellaneous;
+
+import java.util.List;
+
+/**
+ * Created by dimarammfire on 11.03.17.
+ */
+public abstract class Character {
+
+    private final String name;
+    private final Jobs jobTitle;
+    private int health;
+    private Guns gunInHand;
+    private final List<Attributes> attributes;
+    private final List<Guns> guns;
+    private final List<HealthRelated> healthBoosters;
+    private final List<Miscellaneous> miscellaneous;
+
+    public Character(String name, Jobs jobTitle, List<Attributes> attributes, List<Guns> guns,
+                  List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous)  {
+        this.name = name;
+        this.jobTitle = jobTitle;
+        this.health = 100;
+        this.gunInHand = Guns.NONE;
+        this.attributes = attributes;
+        this.guns = guns;
+        this.healthBoosters = healthBoosters;
+        this.miscellaneous = miscellaneous;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Jobs getJobTitle()
+    {
+        return jobTitle;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public Guns getGunInHand() {
+        return gunInHand;
+    }
+
+    public List<Attributes> getAttributes() {
+        return attributes;
+    }
+
+    public List<Guns> getGuns() {
+        return guns;
+    }
+
+    public List<HealthRelated> getHealthBoosters() {
+        return healthBoosters;
+    }
+
+    public List<Miscellaneous> getMiscellaneous()
+    {
+        return miscellaneous;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setGunInHand(Guns gunInHand) {
+        this.gunInHand = gunInHand;
+    }
+}
