@@ -9,11 +9,13 @@ public abstract class Quest {
     public Type type;
     public String description;
     public boolean isCompleted;
+    public int decisionMade;
 
     public Quest(String name, int expGained, String description) {
         this.name = name;
         this.expGained = expGained;
         this.description = description;
         isCompleted = false;
+        decisionMade = 0;
     }
 }
