@@ -22,4 +22,12 @@ public class Square {
   public void setC(char c) {
     this.c = c;
   }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
 }
