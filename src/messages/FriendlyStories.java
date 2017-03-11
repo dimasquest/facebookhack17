@@ -51,48 +51,63 @@ public class FriendlyStories extends NPCStories {
         }
     }
 
-    public String getTrader1() {
-        return trader1;
+    public void getTrader1() {
+        trader1 = "Nasko, local gunsmith. Apparently he has lost his son recently. Worths investigating.";
+        System.out.println(trader1);
     }
 
-    public String getTrader2() {
-        return trader2;
+    public void getTrader2() {
+        trader2 = "Alistair is a local chem dealer. He claims that it is all legal, but I wouldn't be so sure.\n" +
+                "People like him are very likely to have some job to give. If I don't mind getting my hands dirty.";
+        System.out.println(trader2);
     }
 
-    public String getChildM() {
-        return childM;
+    public void getChildM() {
+        childM = "Just a kid running around. He looks a tiny bit suspicious...";
+        System.out.println(childM);
     }
 
-    public String getChildM1() {
-        return childM1;
+    public void getChildM1() {
+        childM1 = "Oh goodness! That looks like Nasko's son! The problem is that he only has one leg. Fuck me, that\n" +
+                "must have been a trip mine. Poor kid, maybe I can still help him.";
+        System.out.println(childM1);
     }
 
-    public String getChildM2() {
-        return childM2;
+    public void getChildM2() {
+        childM2 = "Mayor's son. Maybe he somehow overheard what his dad was talking about with this raider scum?";
+        System.out.println(childM2);
     }
 
-    public String getChildF() {
-        return childF;
+    public void getChildF() {
+        childF = "I feel like I've seen this girl before. Can't remember where though...";
+        System.out.println(childF);
     }
 
-    public String getChildF1() {
-        return childF1;
+    public void getChildF1() {
+        childF1 = "This girl seems to be in an agony. There is nothing I can do to help her. Actually...";
+        System.out.println(childF1);
     }
 
-    public String getChildF2() {
-        return childF2;
+    public void getChildF2() {
+        childF2 = "Please don't do it. If she runs away, they will be aware of my presence. Should I?";
+        System.out.println(childF2);
     }
 
-    public String getSecurity() {
-        return security;
+    public void getSecurity() {
+        security = "Jeff, the guard. Very enthusiastic young man, who isnt careful enough with his gun\n" +
+                "last time he accidentally shot the sheriff. Moron.";
+        System.out.println(security);
     }
 
-    public String getSecurity1() {
-        return security1;
+    public void getSecurity1() {
+        security1 = "Andrew is a very experienced soldier. Ex-captain of the Navy SEALs. Tough as nails, commited as no one else.\n" +
+                "Best companion to have on your side.";
+        System.out.println(security1);
     }
 
-    public String getSecurity2() {
-        return security2;
+    public void getSecurity2() {
+        security2 = "That's a new guy. I think he is called James. Not sure where he comes from. Seems to be an ok guy.";
+        System.out.println(security2);
     }
 
     public String getWoundedGuard() {
