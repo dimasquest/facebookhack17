@@ -117,6 +117,10 @@ public class Character {
         return (health > 0);
     }
 
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
     public void showAttributes() {
         System.out.println("Your attributes are: Experience " + attributes.get(0).getAttributeValue() +", Reputation " + attributes.get(1).getAttributeValue() +
         ", Charisma " + attributes.get(2).getAttributeValue() + ", Luck " + attributes.get(3).getAttributeValue() + ", Strength " + attributes.get(4).getAttributeValue() +

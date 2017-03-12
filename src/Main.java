@@ -37,6 +37,9 @@ public class Main {
     RaiderStories raiderStories = new RaiderStories();
     FriendlyStories friendlyStories = new FriendlyStories();
     GameState state = new GameState();
+    int karma = 0;
+    int strengthOfTown = 0;
+    int strengthOfRaiders = 9;
 
 
     System.in.read();
@@ -456,6 +459,8 @@ public class Main {
         System.out.println("City is defended, well done!");
         message.needHealing(player);
         state.levelUp(500);
+        strengthOfRaiders--;
+        strengthOfTown++;
       }
 
       if (player.getPosition().equals(map.getSquare(51, 49))) {
@@ -465,12 +470,40 @@ public class Main {
         System.out.println("You see a mayor having a late visiter.");
         friendlyStories.getMayor();
         System.out.println("The vivtor has disappeared very quickly.");
+        friendlyStories.getChildM2();
+        System.out.println("Do you want to threaten the kid to tell you the truth?");
+        user_input =  new Scanner(System.in);
+        if (user_input.toString().equals("y")) {
+          karma--;
+          System.out.println("He tells you that his dad was talking to one of the outsiders.\n" +
+                  "Apparently he had at least 200kg of weignt in him. Must be Biggy. That helps.");
+          state.levelUp(750);
+          strengthOfTown++;
+        }
+        else if (player.getAttributes().get(5).getAttributeValue() > 7) {
+          System.out.println("You saw the size of the guy. And he was wearing the helmet covered in silicon.\n" +
+                  "Biggy's famous helmet. Must be him. Must tell the Sheriff.");
+          state.levelUp(750);
+          strengthOfTown++;
+        }
       }
 
       if (player.getPosition().equals(map.getSquare(65, 60))) {
         quest = new MainQuest("Identify the " +
             "traitor", 1000,
             "There is definitely a traitor amongst us. Find out who that is.");
+        System.out.println("There is a traitor among us. Maybe even more than one. I need to find that rat.\n" +
+                "There is a crowd of kids over there. Maybe they saw someone suspicious around?");
+        System.in.read();
+        friendlyStories.getChildF();
+        System.in.read();
+        friendlyStories.getChildM();
+        System.out.println("I can only investigate one of them, the others will get scared and run off.\n" +
+                "Who will that be? b/g");
+        user_input = new Scanner(System.in);
+        if (user_input.toString().equals("b")) {
+          
+        }
       }
 
       if (player.getPosition().equals(map.getSquare(61, 40))) {

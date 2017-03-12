@@ -28,6 +28,7 @@ public class FriendlyStories extends NPCStories {
     private String cit;
     private String cit2;
     private String cit3;
+    private Character player;
 
 
     public void getSheriff() {
@@ -43,7 +44,7 @@ public class FriendlyStories extends NPCStories {
     }
 
     public void getMayor() {
-        if (1 == 0) {
+        if (player.getName().equals("Rohan")) {
             mayor = "Dishonest prick who deserves to die. The entire reason this raider conflict happened in the first place.";
         }
         else {
