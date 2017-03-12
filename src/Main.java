@@ -353,7 +353,7 @@ public class Main {
           position = map.getSquare(position.getX() + 1, position.getY());
           map.display();
           break;
-        default: //case "d":
+        case "d":
           if (!map.isValidMove(position.getX(), position.getY() + 1)) {
             System.out.println("This is not a valid move. Please try another " +
                 "one!");
@@ -367,6 +367,7 @@ public class Main {
           position = map.getSquare(position.getX(), position.getY() + 1);
           map.display();
           break;
+        default: continue;
       }
 
       if (player.getPosition().equals(map.getSquare(82, 49))) {
@@ -429,6 +430,24 @@ public class Main {
       if (player.getPosition().equals(map.getSquare(47, 80))) {
         secQuest = new SecondaryQuest("Get the chems", 300,
             "Decide whether to help Alistair with his chem request.");
+      }
+
+      if (player.getPosition().equals(map.getSquare(71, 90))) {
+        System.out.println("You found a Revolver. Do you want to use it now? " +
+            "[y/n]");
+          player.getGuns().add(Guns.REVOLVER);
+        if (user_input.next().equals('y')) {
+          player.setGunInHand(Guns.REVOLVER);
+        }
+      }
+
+      if (player.getPosition().equals(map.getSquare(74, 20))) {
+        System.out.println("You found a Knife. Do you want to use it now? " +
+            "[y/n]");
+        player.getGuns().add(Guns.KNIFE);
+        if (user_input.next().equals('y')) {
+          player.setGunInHand(Guns.KNIFE);
+        }
       }
 
 
