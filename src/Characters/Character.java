@@ -118,8 +118,8 @@ public class Character {
     }
 
     public void showAttributes() {
-        System.out.println("Your attributes are: Experience " + attributes.get(0) +", Reputation " + attributes.get(1) +
-        ", Charisma " + attributes.get(2) + ", Luck " + attributes.get(3) + ", Strength " + attributes.get(4) +
-        ", Intelligence " + attributes.get(5));
+        System.out.println("Your attributes are: Experience " + attributes.get(0).getAttributeValue() +", Reputation " + attributes.get(1).getAttributeValue() +
+        ", Charisma " + attributes.get(2).getAttributeValue() + ", Luck " + attributes.get(3).getAttributeValue() + ", Strength " + attributes.get(4).getAttributeValue() +
+        ", Intelligence " + attributes.get(5).getAttributeValue());
     }
 }
