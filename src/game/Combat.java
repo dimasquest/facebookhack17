@@ -31,7 +31,7 @@ public class Combat {
         System.in.read();
         System.out.println("Fight is about to begin with :" + enemy.getName());
         System.in.read();
-        int random = ThreadLocalRandom.current().nextInt(4,11);
+        int random;
         while (player.isAlive() && enemy.isAlive()) {
             System.out.println("You are fighting " + enemy.getName());
             int yourDamage;
