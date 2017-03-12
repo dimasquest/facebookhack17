@@ -126,4 +126,8 @@ public class Character {
         ", Charisma " + attributes.get(2).getAttributeValue() + ", Luck " + attributes.get(3).getAttributeValue() + ", Strength " + attributes.get(4).getAttributeValue() +
         ", Intelligence " + attributes.get(5).getAttributeValue());
     }
+
+    public Armor getArmor() {
+        return armor;
+    }
 }

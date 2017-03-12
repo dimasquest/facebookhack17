@@ -298,20 +298,20 @@ public class GameMap {
 
     // Legend
     for (int j = 165; j <= 199; j++) {
-      this.map[40][j].setC('-');
-      this.map[80][j].setC('-');
+      this.map[43][j].setC('-');
+      this.map[62][j].setC('-');
     }
-    for (int i = 41; i < 80; i++) {
+    for (int i = 44; i < 62; i++) {
       this.map[i][165].setC('|');
       this.map[i][199].setC('|');
     }
 
-    this.map[42][179].setC('L');
-    this.map[42][180].setC('E');
-    this.map[42][181].setC('G');
-    this.map[42][182].setC('E');
-    this.map[42][183].setC('N');
-    this.map[42][184].setC('D');
+    this.map[45][179].setC('L');
+    this.map[45][180].setC('E');
+    this.map[45][181].setC('G');
+    this.map[45][182].setC('E');
+    this.map[45][183].setC('N');
+    this.map[45][184].setC('D');
 
     this.map[48][170].setC('Q');
     this.map[48][171].setC(' ');
