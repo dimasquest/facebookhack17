@@ -6,9 +6,10 @@ import Items.Guns;
 import Items.HealthRelated;
 import Items.Miscellaneous;
 import game.Combat;
+import game.GameState;
 import map.GameMap;
 import map.Square;
-import messages.StartStory;
+import messages.*;
 import quests.MainQuest;
 import quests.SecondaryQuest;
 
@@ -16,6 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static Items.Armor.*;
 
 /**
  * Created by dimarammfire on 11.03.17.
@@ -30,6 +33,11 @@ public class Main {
         "Press enter to start.");
     Scanner user_input = new Scanner(System.in);
     StartStory story = new StartStory();
+    Messages message = new Messages();
+    RaiderStories raiderStories = new RaiderStories();
+    FriendlyStories friendlyStories = new FriendlyStories();
+    GameState state = new GameState();
+
 
     System.in.read();
     story.getBiStory();
@@ -47,10 +55,12 @@ public class Main {
     GameMap map = new GameMap();
     Character player = null;
     Character sheriff, bartender, hotelManager, priest, child,
-    raider1, raider2, raider3, raider4;
+    raider1, raider2, raider3, raider4, raiderJet, raiderScrum, raiderAjax, raiderAstra, raiderBiggy;
     char previousChar, nextCharacter;
     MainQuest quest;
     SecondaryQuest secQuest;
+
+
 
     List<Attributes> playerAttributes = new ArrayList<>();
     playerAttributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
@@ -97,7 +107,7 @@ public class Main {
     bartenderAttributes.add(new Attributes(AttributesNames.REPUTATION, 3));
 
     List<Guns> bartenderGuns = new ArrayList<>();
-    bartenderGuns.add(Guns.KNIFE);
+    bartenderGuns.add(Guns.LIGHT_PISTOL);
     List<HealthRelated> bartenderHealthBoosters = new ArrayList<>();
     List<Miscellaneous> bartenderMiscellaneous = new ArrayList<>();
 
@@ -138,7 +148,7 @@ public class Main {
     priestAttributes.add(new Attributes(AttributesNames.REPUTATION, 3));
 
     List<Guns> priestGuns = new ArrayList<>();
-    priestGuns.add(Guns.KNIFE);
+    priestGuns.add(Guns.SHOTGUN);
     List<HealthRelated> priestHealthBoosters = new ArrayList<>();
     List<Miscellaneous> priestMiscellaneous = new ArrayList<>();
 
@@ -178,7 +188,7 @@ public class Main {
     raider1Attributes.add(new Attributes(AttributesNames.REPUTATION, 0));
 
     List<Guns> raider1Guns = new ArrayList<>();
-    raider1Guns.add(Guns.KNIFE);
+    raider1Guns.add(Guns.HEAVY_PISTOL);
     List<HealthRelated> raider1HealthBoosters = new ArrayList<>();
     List<Miscellaneous> raider1Miscellaneous = new ArrayList<>();
 
@@ -186,6 +196,7 @@ public class Main {
         raider1Attributes, raider1Guns, raider1HealthBoosters,
         raider1Miscellaneous, map.getSquare(75, 51));
     raider1.getPosition().setC('^');
+    raider1.setArmor(LIGHT_METAL);
 
     List<Attributes> raider2Attributes = new ArrayList<>();
     raider2Attributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
@@ -196,7 +207,7 @@ public class Main {
     raider2Attributes.add(new Attributes(AttributesNames.REPUTATION, 0));
 
     List<Guns> raider2Guns = new ArrayList<>();
-    raider2Guns.add(Guns.KNIFE);
+    raider2Guns.add(Guns.M1);
     List<HealthRelated> raider2HealthBoosters = new ArrayList<>();
     List<Miscellaneous> raider2Miscellaneous = new ArrayList<>();
 
@@ -204,6 +215,7 @@ public class Main {
         raider2Attributes, raider2Guns, raider2HealthBoosters,
         raider2Miscellaneous, map.getSquare(50, 49));
     raider2.getPosition().setC('^');
+    raider2.setArmor(SCRAP);
 
     List<Attributes> raider3Attributes = new ArrayList<>();
     raider3Attributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
@@ -214,7 +226,7 @@ public class Main {
     raider3Attributes.add(new Attributes(AttributesNames.REPUTATION, 0));
 
     List<Guns> raider3Guns = new ArrayList<>();
-    raider3Guns.add(Guns.KNIFE);
+    raider3Guns.add(Guns.REVOLVER);
     List<HealthRelated> raider3HealthBoosters = new ArrayList<>();
     List<Miscellaneous> raider3Miscellaneous = new ArrayList<>();
 
@@ -222,6 +234,7 @@ public class Main {
         raider3Attributes, raider3Guns, raider3HealthBoosters,
         raider3Miscellaneous, map.getSquare(51, 135));
     raider3.getPosition().setC('^');
+    raider3.setArmor(HEAVY_METAL);
 
     List<Attributes> raider4Attributes = new ArrayList<>();
     raider4Attributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
@@ -232,7 +245,7 @@ public class Main {
     raider4Attributes.add(new Attributes(AttributesNames.REPUTATION, 0));
 
     List<Guns> raider4Guns = new ArrayList<>();
-    raider4Guns.add(Guns.KNIFE);
+    raider4Guns.add(Guns.M4);
     List<HealthRelated> raider4HealthBoosters = new ArrayList<>();
     List<Miscellaneous> raider4Miscellaneous = new ArrayList<>();
 
@@ -240,6 +253,59 @@ public class Main {
         raider4Attributes, raider4Guns, raider4HealthBoosters,
         raider4Miscellaneous, map.getSquare(79, 117));
     raider4.getPosition().setC('^');
+    raider4.setArmor(LIGHT_METAL);
+
+    List<Attributes> raiderJetAttributes = new ArrayList<>();
+    raiderJetAttributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
+    raiderJetAttributes.add(new Attributes(AttributesNames.STRENGTH, 8));
+    raiderJetAttributes.add(new Attributes(AttributesNames.INTELLIGENCE, 5));
+    raiderJetAttributes.add(new Attributes(AttributesNames.LUCK, 2));
+    raiderJetAttributes.add(new Attributes(AttributesNames.CHARISMA, 1));
+    raiderJetAttributes.add(new Attributes(AttributesNames.REPUTATION, 0));
+
+    List<Guns> raiderJetGuns = new ArrayList<>();
+    raiderJetGuns.add(Guns.M4);
+    List<HealthRelated> raiderJetHealthBoosters = new ArrayList<>();
+    List<Miscellaneous> raiderJetMiscellaneous = new ArrayList<>();
+
+    raiderJet = new Character("Jet", Jobs.RAIDER,
+            raiderJetAttributes, raiderJetGuns, raiderJetHealthBoosters,
+            raiderJetMiscellaneous, map.getSquare(30, 100));
+    raiderJet.getPosition().setC('^');
+    raiderJet.setArmor(LIGHT_METAL);
+    raiderJet.setHealth(130);
+
+    raiderScrum = new Character("Scrum", Jobs.RAIDER, raider1Attributes, raider1Guns,
+            raider1HealthBoosters, raider1Miscellaneous, map.getSquare(66,66));
+    raiderScrum.setHealth(160);
+    raiderScrum.setGunInHand(Guns.SHOTGUN);
+    raiderScrum.setArmor(SCRAP);
+
+    raiderBiggy = new Character("Scrum", Jobs.RAIDER, raider1Attributes, raider1Guns,
+            raider1HealthBoosters, raider1Miscellaneous, map.getSquare(100,87));
+    raiderBiggy.setHealth(200);
+    raiderBiggy.setGunInHand(Guns.AXE);
+    raiderBiggy.setArmor(HEAVY_METAL);
+
+    raiderAjax = new Character("Scrum", Jobs.RAIDER, raider1Attributes, raider1Guns,
+            raider1HealthBoosters, raider1Miscellaneous, map.getSquare(66,66));
+    raiderAjax.setHealth(300);
+    raiderAjax.setGunInHand(Guns.M1);
+    raiderAjax.setArmor(EXOSKELETON);
+
+//
+//
+//
+
+    List<Guns> raiderAstraGuns = new ArrayList<>();
+    raiderAstraGuns.add(Guns.REVOLVER);
+
+    raiderAstra = new Character("Astra", Jobs.RAIDER,
+            raider4Attributes, raiderAstraGuns, raider4HealthBoosters,
+            raider4Miscellaneous, map.getSquare(85, 117));
+    raiderAstra.getPosition().setC('^');
+    raiderAstra.setArmor(LIGHT_METAL);
+    raiderAstra.setHealth(120);
 
     // Initialise player
     int n = user_input.nextInt();
@@ -253,6 +319,7 @@ public class Main {
         playerGuns.add(Guns.BIG_IRON);
         player = new Character("Rohan", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
+        player.setArmor(SCRAP);
 
       case 2:
         playerAttributes.get(1).setAttributeValue(4);
@@ -263,6 +330,7 @@ public class Main {
         playerGuns.add(Guns.LIGHT_PISTOL);
         player = new Character("Harp", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
+        player.setArmor(LIGHT_METAL);
 
       case 3:
         playerAttributes.get(1).setAttributeValue(9);
@@ -272,6 +340,7 @@ public class Main {
         playerGuns.add(Guns.SHOTGUN);
         player = new Character("Axel", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
+        player.setArmor(HEAVY_METAL);
 
       case 4:
         playerAttributes.get(1).setAttributeValue(5);
@@ -282,6 +351,7 @@ public class Main {
         playerGuns.add(Guns.M4);
         player = new Character("Ciara", Jobs.PLAYER, playerAttributes,playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
+        player.setArmor(COMBAT_LIGHT);
 
       default:
         playerAttributes.get(1).setAttributeValue(2);
@@ -378,12 +448,23 @@ public class Main {
       if (player.getPosition().equals(map.getSquare(82, 49))) {
         quest = new MainQuest("To the gates!", 500,
             "Enemies are storming into the city, protect it!");
+        System.out.println("There are 2 raiders approaching, fight them!");
+        combat.setEnemy(raider1);
+        combat.attack();
+        System.out.println("One more!");
+        combat.attack();
+        System.out.println("City is defended, well done!");
+        message.needHealing(player);
+        state.levelUp(500);
       }
 
       if (player.getPosition().equals(map.getSquare(51, 49))) {
         quest = new MainQuest("Who is this guy?",
             750,
             "Find a way to identify the stranger.");
+        System.out.println("You see a mayor having a late visiter.");
+        friendlyStories.getMayor();
+        System.out.println("The vivtor has disappeared very quickly.");
       }
 
       if (player.getPosition().equals(map.getSquare(65, 60))) {
@@ -441,7 +522,7 @@ public class Main {
         System.out.println("You found a Revolver. Do you want to use it now? " +
             "[y/n]");
           player.getGuns().add(Guns.REVOLVER);
-        if (user_input.next().equals('y')) {
+        if (user_input.next().equals("y")) {
           player.setGunInHand(Guns.REVOLVER);
         }
       }
@@ -450,7 +531,7 @@ public class Main {
         System.out.println("You found a Knife. Do you want to use it now? " +
             "[y/n]");
         player.getGuns().add(Guns.KNIFE);
-        if (user_input.next().equals('y')) {
+        if (user_input.next().equals("y")) {
           player.setGunInHand(Guns.KNIFE);
         }
       }

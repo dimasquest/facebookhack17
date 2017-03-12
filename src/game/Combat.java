@@ -20,6 +20,10 @@ public class Combat {
         this.enemy = enemy;
     }
 
+    public void setEnemy(Character enemy) {
+        this.enemy = enemy;
+    }
+
     public void attack() throws IOException {
         Scanner user_input = new Scanner(System.in);
         RaiderStories story = new RaiderStories();
@@ -59,5 +63,7 @@ public class Combat {
         else {
             System.out.println("You lost. What a cunt.");
         }
+
+
     }
 }
