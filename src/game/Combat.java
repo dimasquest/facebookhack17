@@ -25,6 +25,8 @@ public class Combat {
         RaiderStories story = new RaiderStories();
         story.getStory(enemy.getName());
         System.in.read();
+        System.out.println("Fight is about to begin with :" + enemy.getName());
+        System.in.read();
         int random = ThreadLocalRandom.current().nextInt(4,11);
         while (player.isAlive() && enemy.isAlive()) {
             if (player.getAttributes().get(3).getAttributeValue() > random) {
