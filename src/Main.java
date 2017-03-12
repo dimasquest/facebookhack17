@@ -326,13 +326,8 @@ public class Main {
         playerGuns.add(Guns.BIG_IRON);
         player = new Character("Rohan", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
-<<<<<<< HEAD
         player.setArmor(SCRAP);break;
 
-=======
-        player.setArmor(SCRAP);
-        break;
->>>>>>> 97fa80413b50b99a42229d93b152f2f6d5121266
       case 2:
         playerAttributes.get(0).setAttributeValue(4);
         playerAttributes.get(1).setAttributeValue(7);
@@ -342,13 +337,8 @@ public class Main {
         playerGuns.add(Guns.LIGHT_PISTOL);
         player = new Character("Harp", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
-<<<<<<< HEAD
         player.setArmor(LIGHT_METAL);break;
 
-=======
-        player.setArmor(LIGHT_METAL);
-        break;
->>>>>>> 97fa80413b50b99a42229d93b152f2f6d5121266
       case 3:
         playerAttributes.get(0).setAttributeValue(9);
         playerAttributes.get(1).setAttributeValue(5);
@@ -358,13 +348,8 @@ public class Main {
         playerGuns.add(Guns.SHOTGUN);
         player = new Character("Axel", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
-<<<<<<< HEAD
         player.setArmor(HEAVY_METAL);break;
 
-=======
-        player.setArmor(HEAVY_METAL);
-        break;
->>>>>>> 97fa80413b50b99a42229d93b152f2f6d5121266
       case 4:
         playerAttributes.get(0).setAttributeValue(5);
         playerAttributes.get(1).setAttributeValue(4);
@@ -374,13 +359,8 @@ public class Main {
         playerGuns.add(Guns.M4);
         player = new Character("Ciara", Jobs.PLAYER, playerAttributes,playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
-<<<<<<< HEAD
         player.setArmor(COMBAT_LIGHT);break;
 
-=======
-        player.setArmor(COMBAT_LIGHT);
-        break;
->>>>>>> 97fa80413b50b99a42229d93b152f2f6d5121266
       default:
         playerAttributes.get(0).setAttributeValue(2);
         playerAttributes.get(1).setAttributeValue(9);
@@ -501,9 +481,11 @@ public class Main {
         combat.setEnemy(raider1);
         raider1.setHealth(100);
         combat.attack();
+        if (!player.isAlive()) {gameOver = true; break;}
         System.out.println("One more!");
         raider1.setHealth(50);
         combat.attack();
+        if (!player.isAlive()) {gameOver = true; break;}
         System.out.println("City is defended, well done!");
         message.needHealing(player);
         state.levelUp(500);
@@ -562,6 +544,7 @@ public class Main {
           combat.setEnemy(raiderJet);
           player.setHealth(120);
           combat.attack();
+          if (!player.isAlive()) {gameOver = true; break;}
           System.out.println("Hard fight, minus one of raider leaders. Still no idea who the traitor is...\n" +
                   "This boy will tell me whether he wants it or not!");
           strengthOfRaiders--;
@@ -609,6 +592,7 @@ public class Main {
         System.out.println("Raiders here!");
         combat.setEnemy(raider4);
         combat.attack();
+        if (!player.isAlive()) {gameOver = true; break;}
         System.out.println("One less to worry about!");
         state.levelUp(0);
         friendlyStories.getCit2();
@@ -626,6 +610,7 @@ public class Main {
           System.out.println("He wasn't worthy, people in chapel need my help! Another dick on the way!");
           combat.setEnemy(raider3);
           combat.attack();
+          if (!player.isAlive()) {gameOver = true; break;}
           System.out.println("People are safe, that's the important part. Arsenal hidden behind the bar, however, is utterly destroyed...");
           state.levelUp(1500);
           message.needHealing(player);
@@ -643,16 +628,19 @@ public class Main {
         combat.setEnemy(raider3);
         raider3.setHealth(90);
         combat.attack();
+        if (!player.isAlive()) {gameOver = true; break;}
         message.needHealing(player);
         System.out.println("One more!");
         combat.setEnemy(raider2);
         raider2.setHealth(80);
         combat.attack();
+        if (!player.isAlive()) {gameOver = true; break;}
         message.needHealing(player);
         System.out.println("And now Biggy himself. I was waiting for that you twat!");
         combat.setEnemy(raiderBiggy);
         System.in.read();
         combat.attack();
+        if (!player.isAlive()) {gameOver = true; break;}
         message.needHealing(player);
         System.out.println("The hardest one so far. This guy was monstrous. I found a holotape\n" +
                 "in one of his pockets. The base was moved into the old ranch. That's where I shall be heading!\n" +
@@ -688,14 +676,17 @@ public class Main {
             combat.setEnemy(raider4);
             raider4.setHealth(100);
             combat.attack();
+            if (!player.isAlive()) {gameOver = true; break;}
             System.out.println("Another!");
             raider4.setHealth(110);
             combat.attack();
+            if (!player.isAlive()) {gameOver = true; break;}
             message.needHealing(player);
             System.out.println("And the last one!");
             raider2.setHealth(90);
             combat.setEnemy(raider2);
             combat.attack();
+            if (!player.isAlive()) {gameOver = true; break;}
             message.needHealing(player);
             System.out.println("That was a tough one! One more stop left...");
             state.levelUp(1000);
@@ -711,14 +702,15 @@ public class Main {
         player.setHealth(150);
         combat.setEnemy(raiderAjax);
         combat.attack();
-        System.out.println("I got their leader! But when I was here, they attacked the town... I hope my friends were prepared...");
-        strengthOfRaiders--;
-        strengthOfRaiders--;
         if (player.isAlive()) {
+          System.out.println("I got their leader! But when I was here, they attacked the town... I hope my friends were prepared...");
+          strengthOfRaiders--;
+          strengthOfRaiders--;
           finalS.finalBattleCheck(strengthOfTown, strengthOfRaiders, karma);
           break;
         }
         else {
+          System.out.println("You got defeated by Ajax. No one can save the town now...");
           gameOver = true;
         }
       }
@@ -862,7 +854,6 @@ public class Main {
 
       if (player.getPosition().equals(map.getSquare(71, 90))) {
         message.randomEncounters();
-        if (player.isAlive()) {
           System.out.println("You found a Revolver and a combat armor. Do you want to use them now? " +
                   "[y/n]");
           player.getGuns().add(Guns.REVOLVER);
@@ -871,13 +862,9 @@ public class Main {
             player.setArmor(COMBAT_LIGHT);
           }
         }
-      }
-      else {
-        gameOver = true;
-      }
+
       if (player.getPosition().equals(map.getSquare(74, 20))) {
         message.randomEncounters();
-        if (player.isAlive()) {
           System.out.println("You found M4. Do you want to use it now? " +
                   "[y/n]");
           player.getGuns().add(Guns.M4);
@@ -885,10 +872,6 @@ public class Main {
             player.setGunInHand(Guns.M4);
           }
         }
-      }
-      else {
-        gameOver = true;
-      }
 
       if (gameOver) {
         break;
