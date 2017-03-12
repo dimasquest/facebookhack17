@@ -1,4 +1,4 @@
-package items;
+package Items;
 
 /**
  * Created by dimarammfire on 12.03.17.
