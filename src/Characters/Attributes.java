@@ -28,4 +28,12 @@ public final class Attributes {
     public void incrementAttribute(Attributes attribute) {
         this.attributeValue = attribute.getAttributeValue() + 1;
     }
+
+    public void incrementExpNormal(Attributes attribute) {
+        this.attributeValue = attribute.getAttributeValue() + 150;
+    }
+
+    public void incrementExpBoss(Attributes attribute) {
+        this.attributeValue = attribute.getAttributeValue() + 450;
+    }
 }

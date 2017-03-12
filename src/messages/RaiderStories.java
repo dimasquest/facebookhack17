@@ -1,12 +1,49 @@
 package messages;
 
+import java.util.Scanner;
+
 /**
  * Created by dimarammfire on 11.03.17.
  */
 public class RaiderStories extends NPCStories {
 
+    private String name;
+
 
     public RaiderStories() {
+    }
+
+    public void getStory(String name) {
+        boolean flag = true;
+        while (flag) {
+            switch (name) {
+                case "Jet":
+                    getJetStory();
+                    flag = false;
+                    break;
+                case "Scrum":
+                    getScrumStory();
+                    flag = false;
+                    break;
+                case "Biggy":
+                    getBiggyStory();
+                    flag = false;
+                    break;
+                case "Astra":
+                    getAstraStory();
+                    flag = false;
+                    break;
+                case "Ajax":
+                    getAjaxStory();
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("A normal raider. One of the pack. Can't be too hard.");
+                    flag = false;
+                    break;
+            }
+        }
+
     }
 
     public void getAjaxStory() {
