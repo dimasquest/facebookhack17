@@ -36,4 +36,12 @@ public final class Attributes {
     public void incrementExpBoss(Attributes attribute) {
         this.attributeValue = attribute.getAttributeValue() + 450;
     }
+
+    public void pay(Attributes attributes) {
+        this.attributeValue = attributes.getAttributeValue() - 100;
+    }
+
+    public void addExp(int exp) {
+        this.attributeValue = attributeValue + exp;
+    }
 }
