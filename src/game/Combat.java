@@ -55,7 +55,7 @@ public class Combat {
                     enemy.getName().equals("Scrum") || enemy.getName().equals("Astra") ||
                     enemy.getName().equals("Biggy") || enemy.getName().equals("Scrum")) {
                 player.getAttributes().get(0).incrementExpBoss(player.getAttributes().get(0));
-                System.out.println("You earned 350 xp. Your current xp is " + player.getAttributes().get(0).getAttributeValue());
+                System.out.println("You earned 450 xp. Your current xp is " + player.getAttributes().get(0).getAttributeValue());
             }
             player.getAttributes().get(0).incrementExpNormal(player.getAttributes().get(0));
             System.out.println("You earned 150 xp. Your current xp is " + player.getAttributes().get(0).getAttributeValue());
