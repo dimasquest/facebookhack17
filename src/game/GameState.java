@@ -9,16 +9,17 @@ import map.Square;
 public class GameState {
 
     public int exp;
-    public int decisionFinalCounter;
     public Character player;
 
     public GameState() {
     }
 
     public void levelUp(int newExp) {
-        if (exp + newExp > 12000) {
+        if (exp + newExp > 1200) {
+            System.out.println("Level up!");
             player.improveStats();
-            exp = exp + newExp - 12000;
+            exp = exp + newExp - 1200;
+            player.incLevel();
         }
         else {
             exp +=newExp;

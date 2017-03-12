@@ -23,6 +23,7 @@ public class Character {
     private boolean isAlive;
     private int damage;
     private Armor armor;
+    private int level;
 
     public Character(String name, Jobs jobTitle, List<Attributes> attributes, List<Guns> guns,
                   List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous, Square position)  {
@@ -38,6 +39,7 @@ public class Character {
         this.isAlive = true;
         this.damage = gunInHand.getDamage();
         this.armor = Armor.LEATHER;
+        this.level = 0;
     }
 
     public String getName() {
@@ -96,12 +98,12 @@ public class Character {
     public void improveStats() {
         System.out.println("You leveled up! Choose an attribute to improve.");
         System.out.println("Current: ");
-        attributes.get(1).incrementAttribute(attributes.get(1));
-        attributes.get(2).incrementAttribute(attributes.get(2));
-        attributes.get(3).incrementAttribute(attributes.get(3));
-        attributes.get(4).incrementAttribute(attributes.get(4));
-        attributes.get(5).incrementAttribute(attributes.get(5));
-//        showAttributes();
+//        attributes.get(1).incrementAttribute(attributes.get(1));
+//        attributes.get(2).incrementAttribute(attributes.get(2));
+//        attributes.get(3).incrementAttribute(attributes.get(3));
+//        attributes.get(4).incrementAttribute(attributes.get(4));
+//        attributes.get(5).incrementAttribute(attributes.get(5));
+        showAttributes();
 //        Scanner input = new Scanner(System.in);
 //        switch (input.toString()) {
 //            case "Intelligence": attributes.get(5).incrementAttribute(attributes.get(5)); break;
@@ -115,7 +117,6 @@ public class Character {
 //        }
         System.out.println("New attributes:");
         showAttributes();
-        attributes.get(0).setAttributeValue(0);
     }
 
     public boolean isAlive() {
@@ -127,12 +128,17 @@ public class Character {
     }
 
     public void showAttributes() {
-        System.out.println("Your attributes are: Experience " + attributes.get(0).getAttributeValue() +", Reputation " + attributes.get(1).getAttributeValue() +
-        ", Charisma " + attributes.get(2).getAttributeValue() + ", Luck " + attributes.get(3).getAttributeValue() + ", Strength " + attributes.get(4).getAttributeValue() +
-        ", Intelligence " + attributes.get(5).getAttributeValue());
+        System.out.println("Your attributes are: Experience " + attributes.get(3).getAttributeValue() +", Reputation " + attributes.get(5).getAttributeValue() +
+        ", Charisma " + attributes.get(4).getAttributeValue() + ", Luck " + attributes.get(2).getAttributeValue() + ", Strength " + attributes.get(0).getAttributeValue() +
+        ", Intelligence " + attributes.get(1).getAttributeValue());
+    }
+
+    public void incLevel() {
+        this.level = level + 1;
     }
 
     public Armor getArmor() {
         return armor;
+
     }
 }

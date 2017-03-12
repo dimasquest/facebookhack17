@@ -42,7 +42,9 @@ public class Main {
     int strengthOfTown = 0;
     int strengthOfRaiders = 9;
     String input;
-    FinalDecisions finalS = null;
+    FinalDecisions finalS = new FinalDecisions();
+    String conditionP = "Condition passed!";
+    String condF = "Condition failed!";
 
 
     System.in.read();
@@ -68,10 +70,10 @@ public class Main {
 
 
     List<Attributes> playerAttributes = new ArrayList<>();
-    playerAttributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
     playerAttributes.add(new Attributes(AttributesNames.STRENGTH, 0));
     playerAttributes.add(new Attributes(AttributesNames.INTELLIGENCE, 0));
     playerAttributes.add(new Attributes(AttributesNames.LUCK, 0));
+    playerAttributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
     playerAttributes.add(new Attributes(AttributesNames.CHARISMA, 0));
     playerAttributes.add(new Attributes(AttributesNames.REPUTATION, 0));
 
@@ -317,9 +319,10 @@ public class Main {
     story.getStory(n);
     switch (n) {
       case 1:
-        playerAttributes.get(1).setAttributeValue(7);
-        playerAttributes.get(2).setAttributeValue(5);
-        playerAttributes.get(3).setAttributeValue(2);
+        playerAttributes.get(0).setAttributeValue(7);
+        playerAttributes.get(1).setAttributeValue(5);
+        playerAttributes.get(2).setAttributeValue(2);
+        playerAttributes.get(3).setAttributeValue(0);
         playerAttributes.get(4).setAttributeValue(4);
         playerGuns.add(Guns.BIG_IRON);
         player = new Character("Rohan", Jobs.PLAYER, playerAttributes, playerGuns,
@@ -327,20 +330,21 @@ public class Main {
         player.setArmor(SCRAP);
 
       case 2:
-        playerAttributes.get(1).setAttributeValue(4);
-        playerAttributes.get(2).setAttributeValue(7);
-        playerAttributes.get(3).setAttributeValue(4);
+        playerAttributes.get(0).setAttributeValue(4);
+        playerAttributes.get(1).setAttributeValue(7);
+        playerAttributes.get(2).setAttributeValue(4);
+        playerAttributes.get(3).setAttributeValue(0);
         playerAttributes.get(4).setAttributeValue(5);
-        playerAttributes.get(5).setAttributeValue(10);
         playerGuns.add(Guns.LIGHT_PISTOL);
         player = new Character("Harp", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
         player.setArmor(LIGHT_METAL);
 
       case 3:
-        playerAttributes.get(1).setAttributeValue(9);
-        playerAttributes.get(2).setAttributeValue(5);
-        playerAttributes.get(3).setAttributeValue(2);
+        playerAttributes.get(0).setAttributeValue(9);
+        playerAttributes.get(1).setAttributeValue(5);
+        playerAttributes.get(2).setAttributeValue(2);
+        playerAttributes.get(3).setAttributeValue(0);
         playerAttributes.get(4).setAttributeValue(1);
         playerGuns.add(Guns.SHOTGUN);
         player = new Character("Axel", Jobs.PLAYER, playerAttributes, playerGuns,
@@ -348,22 +352,22 @@ public class Main {
         player.setArmor(HEAVY_METAL);
 
       case 4:
-        playerAttributes.get(1).setAttributeValue(5);
-        playerAttributes.get(2).setAttributeValue(4);
-        playerAttributes.get(3).setAttributeValue(8);
-        playerAttributes.get(4).setAttributeValue(6);
-        playerAttributes.get(5).setAttributeValue(10);
+        playerAttributes.get(0).setAttributeValue(5);
+        playerAttributes.get(1).setAttributeValue(4);
+        playerAttributes.get(2).setAttributeValue(8);
+        playerAttributes.get(3).setAttributeValue(0);
+        playerAttributes.get(4).setAttributeValue(7);
         playerGuns.add(Guns.M4);
         player = new Character("Ciara", Jobs.PLAYER, playerAttributes,playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
         player.setArmor(COMBAT_LIGHT);
 
       default:
-        playerAttributes.get(1).setAttributeValue(2);
-        playerAttributes.get(2).setAttributeValue(9);
-        playerAttributes.get(3).setAttributeValue(3);
+        playerAttributes.get(0).setAttributeValue(2);
+        playerAttributes.get(1).setAttributeValue(9);
+        playerAttributes.get(2).setAttributeValue(3);
+        playerAttributes.get(3).setAttributeValue(0);
         playerAttributes.get(4).setAttributeValue(5);
-        playerAttributes.get(5).setAttributeValue(10);
         playerGuns.add(Guns.LIGHT_PISTOL);
         player = new Character("Rachel", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
@@ -452,6 +456,19 @@ public class Main {
           position = map.getSquare(position.getX(), position.getY() + 1);
           map.display();
           break;
+        case "h" :
+          System.out.println(player.getHealth() + " is your health.");
+          break;
+        case "x" :
+          System.out.println("Your weapon is " + player.getGunInHand() + "\n" +
+                  "and your armor is " + player.getArmor()); break;
+        case "medic" :
+          System.out.println("You spend 300 exp to heal");
+          player.setHealth(110);break;
+        case "dimas" : player.setHealth(500);
+          System.out.println("CHEAT");
+        player.setGunInHand(Guns.HECATE); break;
+        case "exp" : state.levelUp(1200);
         default: continue;
       }
 
@@ -487,6 +504,7 @@ public class Main {
         friendlyStories.getChildM2();
         System.out.println("Do you want to threaten the kid to tell you the truth?");
         user_input =  new Scanner(System.in);
+        System.in.read();
         if (user_input.toString().equals("y")) {
           karma--;
           System.out.println("He tells you that his dad was talking to one of the outsiders.\n" +
@@ -494,7 +512,9 @@ public class Main {
           state.levelUp(750);
           strengthOfTown++;
         }
-        else if (player.getAttributes().get(5).getAttributeValue() > 7) {
+        else if (player.getAttributes().get(1).getAttributeValue() > 7) {
+          System.out.println(conditionP);
+          System.in.read();
           System.out.println("You saw the size of the guy. And he was wearing the helmet covered in silicon.\n" +
                   "Biggy's famous helmet. Must be him. Must tell the Sheriff.");
           state.levelUp(750);
@@ -524,7 +544,7 @@ public class Main {
                   "This boy will tell me whether he wants it or not!");
           strengthOfRaiders--;
           System.in.read();
-          if (player.getAttributes().get(4).getAttributeValue() > 7) {
+          if (player.getAttributes().get(0).getAttributeValue() > 7) {
             System.out.println("Fuck, I'm not sure he is alive anymore... I was a bit too eager to get the info...");
             karma--;
           }
@@ -536,14 +556,14 @@ public class Main {
             System.in.read();
             System.out.println("Should I force him to talk or just ask him nicely? f/c");
             input = user_input.next();
-            if (input.equals("f") && player.getAttributes().get(4).getAttributeValue() > 6) {
+            if (input.equals("f") && player.getAttributes().get(0).getAttributeValue() > 6) {
               System.out.println("Wasn't too hard. They use the church basement to get the illegal goods into the town \n" +
                       "alongside with the infiltrators. Sheriff needs to know.");
               strengthOfRaiders--;
               state.levelUp(1000);
               message.needHealing(player);
             }
-            else if (input.equals("c") && player.getAttributes().get(2).getAttributeValue() > 6) {
+            else if (input.equals("c") && player.getAttributes().get(4).getAttributeValue() > 6) {
               System.out.println("Wasn't too hard. They use the church basement to get the illegal goods into the town \n" +
                       "alongside with the infiltrators. Sheriff needs to know.");
               strengthOfRaiders--;
@@ -628,7 +648,7 @@ public class Main {
         quest = new MainQuest("Find raider HQ", 1000,
             "Find where the main base is.");
         System.out.println("Shit I got spotted! Ah wait, that's a little girl, maybe I can talk my way out?");
-        if (player.getAttributes().get(2).getAttributeValue() > 6) {
+        if (player.getAttributes().get(4).getAttributeValue() > 6) {
           System.out.println("She calmed down and I stole the passcode quite easily. Now the last bastard that needs to be defeated...");
         }
         else {
@@ -673,11 +693,11 @@ public class Main {
         strengthOfRaiders--;
         strengthOfRaiders--;
         if (player.isAlive()) {
-          gameOver = finalS.finalBattleCheck(strengthOfTown, strengthOfRaiders, karma);
+          finalS.finalBattleCheck(strengthOfTown, strengthOfRaiders, karma);
+          break;
         }
         else {
           gameOver = true;
-          break;
         }
       }
 
