@@ -384,7 +384,7 @@ public class Main {
             "To proceed through the main story you need to complete the Q marks.\n" +
             "To try to obtain better equipment you need to go to § signs.\n" +
             "Galon town is about to get destroyed, go save it!\n");
-
+    player.setHealth(120);
 
     boolean gameOver = false;
     while (!gameOver) {
@@ -454,8 +454,10 @@ public class Main {
             "Enemies are storming into the city, protect it!");
         System.out.println("There are 2 raiders approaching, fight them!");
         combat.setEnemy(raider1);
+        raider1.setHealth(100);
         combat.attack();
         System.out.println("One more!");
+        raider1.setHealth(50);
         combat.attack();
         System.out.println("City is defended, well done!");
         message.needHealing(player);
@@ -525,6 +527,7 @@ public class Main {
                       "alongside with the infiltrators. Sheriff needs to know.");
               strengthOfRaiders--;
               state.levelUp(1000);
+              message.needHealing(player);
             }
             else if (input.equals("c") && player.getAttributes().get(2).getAttributeValue() > 6) {
               System.out.println("Wasn't too hard. They use the church basement to get the illegal goods into the town \n" +
@@ -532,11 +535,13 @@ public class Main {
               strengthOfRaiders--;
               state.levelUp(1000);
               karma++;
+              message.needHealing(player);
             }
             else {
               System.out.println("He decided that a bullet in a head is a better idea than talking, well that's another opportunity missed...");
               strengthOfTown--;
               state.levelUp(1000);
+              message.needHealing(player);
             }
           }
         }
@@ -545,11 +550,64 @@ public class Main {
       if (player.getPosition().equals(map.getSquare(61, 40))) {
         quest = new MainQuest("Protect the town", 1500,
             "The town is on fire! Protect it!");
+        System.out.println("Raiders here!");
+        combat.setEnemy(raider4);
+        combat.attack();
+        System.out.println("One less to worry about!");
+        state.levelUp(0);
+        friendlyStories.getCit2();
+        System.out.println("There are raiders running to the church! Shit, I also saw the guy who Sheriff\n" +
+                "has pointed at throwing a grenade into the bar. What the hell do I do? g/r");
+        input = user_input.next();
+        if (input.equals("g")) {
+          System.out.println("This prick is down! But the church is now in flames... Raiders got it...");
+          state.levelUp(1500);
+          message.needHealing(player);
+          strengthOfRaiders--;
+          karma--;
+        }
+        else {
+          System.out.println("He wasn't worthy, people in chapel need my help! Another dick on the way!");
+          combat.setEnemy(raider3);
+          combat.attack();
+          System.out.println("People are safe, that's the important part. Arsenal hidden behind the bar, however, is utterly destroyed...");
+          state.levelUp(1500);
+          message.needHealing(player);
+          strengthOfRaiders--;
+          strengthOfTown--;
+        }
       }
 
       if (player.getPosition().equals(map.getSquare(49, 118))) {
         quest = new MainQuest("Clear the ruins", 2000,
             "Defeat the raiders in the ruins. That is their base.");
+        System.out.println("Apparently that is where the snakes are hiding... Lets go in and see.");
+        message.randomEncounters();
+        System.out.println("I seem some of them, lets get ready for a fight!");
+        combat.setEnemy(raider3);
+        raider3.setHealth(90);
+        combat.attack();
+        message.needHealing(player);
+        System.out.println("One more!");
+        combat.setEnemy(raider2);
+        raider2.setHealth(80);
+        combat.attack();
+        message.needHealing(player);
+        System.out.println("And now Biggy himself. I was waiting for that you twat!");
+        combat.setEnemy(raiderBiggy);
+        System.in.read();
+        combat.attack();
+        message.needHealing(player);
+        System.out.println("The hardest one so far. This guy was monstrous. I found a holotape\n" +
+                "in one of his pockets. The base was moved into the old ranch. That's where I shall be heading!\n" +
+                "I also need a better gun and armor, here is M1 and a combat armor.");
+        player.setGunInHand(Guns.M1);
+        player.setArmor(COMBAT_HEAVY);
+        state.levelUp(2000);
+        strengthOfRaiders--;
+        strengthOfTown++;
+
+
       }
 
       if (player.getPosition().equals(map.getSquare(79, 90))) {
@@ -565,22 +623,117 @@ public class Main {
       if (player.getPosition().equals(map.getSquare(53, 65))) {
         secQuest = new SecondaryQuest("Observer", 100,
             "Walk around and check if anyone needs help.");
+        System.out.println("I see a body on the road, he isnt moving...");
+        friendlyStories.getWoundedGuard2();
+        System.in.read();
+        System.out.println("Time to go.");
+        state.levelUp(100);
       }
       if (player.getPosition().equals(map.getSquare(79, 116))) {
         secQuest = new SecondaryQuest("Deal with the wounded raider", 150,
             "Decide what to do with this raider scum");
+        friendlyStories.getWoundedRaider();
+        System.out.println("That is one of raider infiltrators. I know that he is wounded and stuff...\n" +
+                "But come on, he would have done the same thing to me if I was in his place. k/s");
+        input = user_input.next();
+        if (input.equals("k")) {
+          System.out.println("Minus one. That will make the life of the inhabitants a bit simpler.");
+          strengthOfRaiders--;
+          karma--;
+        }
+        else {
+          System.out.println("He is unarmed and wounded. Maybe in another life...");
+          strengthOfTown--;
+          karma++;
+        }
       }
       if (player.getPosition().equals(map.getSquare(42, 40))) {
         secQuest = new SecondaryQuest("Find Nasko's son", 300,
             "Look for Nasko's son. Nasko's son needs to be alive.");
+        friendlyStories.getTrader1();
+        System.out.println("I'll look behind the city walls then.");
+        System.in.read();
+        message.randomEncounters();
+        message.needHealing(player);
+        System.out.println("I think I can see him!");
+        friendlyStories.getChildM1();
+        System.out.println("Time to check my medical skills...");
+        if (player.getAttributes().get(5).getAttributeValue() > 5) {
+          System.out.println("Despite losing a leg, I managed to stop the bloodloss and safely return kid to the town.");
+          karma++;
+          karma++;
+          state.levelUp(300);
+        }
+        else {
+          System.out.println("Nothing I can do about it, I guess I'll just have to tell the news to his father...");
+          state.levelUp(300);
+        }
       }
       if (player.getPosition().equals(map.getSquare(62, 109))) {
       secQuest = new SecondaryQuest("Find stolen ammo", 250,
           "Find out what has happened to the ammunition.");
+        System.out.println("Bar attender tells me that one of those guards could be guilty of the theft...");
+        System.in.read();
+        friendlyStories.getSecurity1();
+        System.in.read();
+        friendlyStories.getWoundedGuard();
+        System.in.read();
+        friendlyStories.getSecurity2();
+        System.in.read();
+        System.out.println("Is it Andrew or... Fuck ,how would I know, just have to consider the little facts that I have.");
+        if (player.getAttributes().get(3).getAttributeValue() > 5) {
+          System.out.println("I think the new guy just accidentally dropped 7.62. We don't use these bullets\n" +
+                  "anywhere but in the town turret...");
+        }
+        System.out.println("My choice is: a/b/c");
+        input = user_input.next();
+        if (input.equals("a")) {
+          System.out.println("I had to accuse Andrew. Theft is a theft... What a loss for the security.");
+          strengthOfTown--;
+          state.levelUp(250);
+        }
+        else if (input.equals("b")) {
+          System.out.println("Accusing someone who can't defend himself is harsh, but that's life right?");
+          state.levelUp(250);
+        }
+        else {
+          System.out.println("His face says guilty. Right decision, does he deserve to live for such a crime? y/n");
+          input = user_input.next();
+          if (input.equals("y")) {
+            System.out.println("I hope you suffer the guilt for the rest of your life you fucker...");
+            karma++;
+          }
+          else {
+            System.out.println("One less problem for the Sheriff...");
+            karma--;
+            strengthOfTown++;
+          }
+        }
       }
       if (player.getPosition().equals(map.getSquare(46, 19))) {
       secQuest = new SecondaryQuest("Find Orson", 500,
           "Find out what happened to Orson Krennik.");
+        friendlyStories.getCit3();
+        System.out.println("Orson was a well known ranger here. His wife asked me to find him. Or is remains...");
+        message.randomEncounters();
+        System.out.println("I can see this bitch Astra cutting his remains into pieces! Die you whore!");
+        combat.setEnemy(raiderAstra);
+        combat.attack();
+        message.needHealing(player);
+        System.out.println("Rest in peace Orson... You deserved it... Should I take his armor and weapons\n" +
+                "Or respect his peace? y/n");
+        input = user_input.next();
+        if (input.equals("y")) {
+          System.out.println("They would certainly help me in this war...");
+          player.setArmor(RANGER_ARMOR);
+          player.setGunInHand(Guns.HECATE);
+          state.levelUp(500);
+        }
+        else {
+          karma++;
+          karma++;
+          state.levelUp(500);
+        }
       }
       if (player.getPosition().equals(map.getSquare(47, 80))) {
         secQuest = new SecondaryQuest("Get the chems", 300,
@@ -597,11 +750,11 @@ public class Main {
       }
 
       if (player.getPosition().equals(map.getSquare(74, 20))) {
-        System.out.println("You found a Knife. Do you want to use it now? " +
+        System.out.println("You found M4. Do you want to use it now? " +
             "[y/n]");
-        player.getGuns().add(Guns.KNIFE);
+        player.getGuns().add(Guns.M4);
         if (user_input.next().equals("y")) {
-          player.setGunInHand(Guns.KNIFE);
+          player.setGunInHand(Guns.M4);
         }
       }
 
