@@ -30,6 +30,9 @@ public class FriendlyStories extends NPCStories {
     private String cit3;
     private Character player;
 
+    public FriendlyStories(Character player) {
+        this.player = player;
+    }
 
     public void getSheriff() {
         sheriff = "Tall man in his 50s with a S&W on his hip and a 1887 behind the back. The most honest man in the wasteland\n" +

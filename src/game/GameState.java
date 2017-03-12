@@ -16,9 +16,9 @@ public class GameState {
     }
 
     public void levelUp(int newExp) {
-        if (exp + newExp > 1200) {
+        if (exp + newExp > 12000) {
             player.improveStats();
-            exp = exp + newExp - 1200;
+            exp = exp + newExp - 12000;
         }
         else {
             exp +=newExp;

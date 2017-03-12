@@ -5,6 +5,7 @@ import Characters.Jobs;
 import Items.Guns;
 import Items.HealthRelated;
 import Items.Miscellaneous;
+import decisions.FinalDecisions;
 import game.Combat;
 import game.GameState;
 import map.GameMap;
@@ -35,12 +36,13 @@ public class Main {
     StartStory story = new StartStory();
     Messages message = new Messages();
     RaiderStories raiderStories = new RaiderStories();
-    FriendlyStories friendlyStories = new FriendlyStories();
+    Character player;
     GameState state = new GameState();
     int karma = 0;
     int strengthOfTown = 0;
     int strengthOfRaiders = 9;
     String input;
+    FinalDecisions finalS = null;
 
 
     System.in.read();
@@ -57,7 +59,6 @@ public class Main {
     System.out.println("\n\n\nEnter the number of your hero:");
 
     GameMap map = new GameMap();
-    Character player = null;
     Character sheriff, bartender, hotelManager, priest, child,
     raider1, raider2, raider3, raider4, raiderJet, raiderScrum, raiderAjax, raiderAstra, raiderBiggy;
     char previousChar, nextCharacter;
@@ -368,6 +369,8 @@ public class Main {
             playerHealthBoosters, playerMiscellaneous, position);
     }
 
+    FriendlyStories friendlyStories = new FriendlyStories(player);
+
 
 //  HERE IS THE PLAYER
     player.showAttributes();
@@ -464,6 +467,11 @@ public class Main {
         state.levelUp(500);
         strengthOfRaiders--;
         strengthOfTown++;
+        System.in.read();
+        System.out.println("I need to see Sheriff to get the info on the situation...");
+        friendlyStories.getSheriff();
+        System.in.read();
+        System.out.println("Lets roll! I know that there is a traitor to be identified now...");
       }
 
       if (player.getPosition().equals(map.getSquare(51, 49))) {
@@ -507,9 +515,12 @@ public class Main {
         if (input.equals("b")) {
           System.out.println("Boy led me right into the ambush! Jet himself!");
           combat.setEnemy(raiderJet);
+          player.setHealth(120);
+          combat.attack();
           System.out.println("Hard fight, minus one of raider leaders. Still no idea who the traitor is...\n" +
                   "This boy will tell me whether he wants it or not!");
           strengthOfRaiders--;
+          System.in.read();
           if (player.getAttributes().get(4).getAttributeValue() > 7) {
             System.out.println("Fuck, I'm not sure he is alive anymore... I was a bit too eager to get the info...");
             karma--;
@@ -613,10 +624,52 @@ public class Main {
       if (player.getPosition().equals(map.getSquare(79, 90))) {
         quest = new MainQuest("Find raider HQ", 1000,
             "Find where the main base is.");
+        System.out.println("Shit I got spotted! Ah wait, that's a little girl, maybe I can talk my way out?");
+        if (player.getAttributes().get(2).getAttributeValue() > 6) {
+          System.out.println("She calmed down and I stole the passcode quite easily. Now the last bastard that needs to be defeated...");
+        }
+        else {
+          friendlyStories.getChildF2();
+          System.out.println("Should I? y/n");
+          input = user_input.next();
+          if (input.equals("y")) {
+            karma--;
+            karma--;
+            System.out.println("There are always sacrifices that need to be made.. Guess she was one of them...");
+            state.levelUp(1000);
+          }
+          else {
+            System.out.println("There goes my cover ... ");
+            combat.setEnemy(raider4);
+            raider4.setHealth(100);
+            combat.attack();
+            System.out.println("Another!");
+            raider4.setHealth(110);
+            combat.attack();
+            message.needHealing(player);
+            System.out.println("And the last one!");
+            raider2.setHealth(90);
+            combat.setEnemy(raider2);
+            combat.attack();
+            message.needHealing(player);
+            System.out.println("That was a tough one! One more stop left...");
+            state.levelUp(1000);
+          }
+        }
+        strengthOfRaiders--;
+        strengthOfTown++;
       }
       if (player.getPosition().equals(map.getSquare(82, 25))) {
         quest = new MainQuest("Something ends, something begins", 3000,
             "Defeat the raiders in the last battle for the Wasteland!");
+        System.out.println("Here comes the last one... I am ready Ajax. I won't give up and surrender! Bring it on!");
+        player.setHealth(150);
+        combat.setEnemy(raiderAjax);
+        combat.attack();
+        System.out.println("I got their leader! But when I was here, they attacked the town... I hope my friends were prepared...");
+        strengthOfRaiders--;
+        strengthOfRaiders--;
+        gameOver = finalS.finalBattleCheck(strengthOfTown, strengthOfRaiders, karma);
       }
 
       // Add SecondaryQuests
@@ -720,6 +773,7 @@ public class Main {
         combat.setEnemy(raiderAstra);
         combat.attack();
         message.needHealing(player);
+        friendlyStories.getWoundedRanger();
         System.out.println("Rest in peace Orson... You deserved it... Should I take his armor and weapons\n" +
                 "Or respect his peace? y/n");
         input = user_input.next();
@@ -738,6 +792,21 @@ public class Main {
       if (player.getPosition().equals(map.getSquare(47, 80))) {
         secQuest = new SecondaryQuest("Get the chems", 300,
             "Decide whether to help Alistair with his chem request.");
+        friendlyStories.getTrader1();
+        System.out.println("Easy job, good payment, but does the doctor need these meds as well?");
+        System.in.read();
+        friendlyStories.getDocsec();
+        System.out.println("Do I do it or not? y/n");
+        input = user_input.next();
+        if (input.equals("y")) {
+          System.out.println("Everyone survives in different ways, I guess that's what I needed to do...");
+          karma--;
+          state.levelUp(1500);
+        }
+        else {
+          System.out.println(" I am not that kind of person...");
+          karma++;
+        }
       }
 
       if (player.getPosition().equals(map.getSquare(71, 90))) {
@@ -762,8 +831,12 @@ public class Main {
       if (gameOver) {
         break;
       }
+
+
     }
 
+    System.out.println("Thank you for playing! I hope you enjoyed the game!\n" +
+            "Made by Irina, Codin and Dima for FacebookHack17.");
   }
 
 }
