@@ -390,7 +390,6 @@ public class Main {
         quest = new MainQuest("Identify the " +
             "traitor", 1000,
             "There is definitely a traitor amongst us. Find out who that is.");
-        System.out.println();
       }
 
       if (player.getPosition().equals(map.getSquare(61, 40))) {
