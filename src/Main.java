@@ -328,7 +328,7 @@ public class Main {
         player = new Character("Rohan", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
         player.setArmor(SCRAP);
-
+        break;
       case 2:
         playerAttributes.get(0).setAttributeValue(4);
         playerAttributes.get(1).setAttributeValue(7);
@@ -339,7 +339,7 @@ public class Main {
         player = new Character("Harp", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
         player.setArmor(LIGHT_METAL);
-
+        break;
       case 3:
         playerAttributes.get(0).setAttributeValue(9);
         playerAttributes.get(1).setAttributeValue(5);
@@ -350,7 +350,7 @@ public class Main {
         player = new Character("Axel", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
         player.setArmor(HEAVY_METAL);
-
+        break;
       case 4:
         playerAttributes.get(0).setAttributeValue(5);
         playerAttributes.get(1).setAttributeValue(4);
@@ -361,7 +361,7 @@ public class Main {
         player = new Character("Ciara", Jobs.PLAYER, playerAttributes,playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
         player.setArmor(COMBAT_LIGHT);
-
+        break;
       default:
         playerAttributes.get(0).setAttributeValue(2);
         playerAttributes.get(1).setAttributeValue(9);
