@@ -8,7 +8,7 @@ public enum Guns {
     REVOLVER (20, 0.03, "revolver"),
     KNIFE (10, 0, "knife"),
     SHOTGUN (50, 0.1, "shotgun"),
-    LIGHT_PISTOL(10, 0.05, "light pistol"),
+    LIGHT_PISTOL(15, 0.05, "light pistol"),
     M4(22, 0.05, "m4"),
     M1(45, 0.2,"m1"),
     HECATE(130, 0.3, "Hecate II"),

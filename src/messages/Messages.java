@@ -41,7 +41,7 @@ public class Messages {
         }
         else if (random == 1) {
             System.out.println("You found a relic! Extra exp.");
-            player.getAttributes().get(0).addExp(200);
+            player.getAttributes().get(3).setAttributeValue(player.getE().getAttributeValue()+200);
             player.showAttributes();
         }
         else {

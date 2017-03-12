@@ -29,19 +29,8 @@ public final class Attributes {
         this.attributeValue = attribute.getAttributeValue() + 1;
     }
 
-    public void incrementExpNormal(Attributes attribute) {
-        this.attributeValue = attribute.getAttributeValue() + 150;
-    }
-
-    public void incrementExpBoss(Attributes attribute) {
-        this.attributeValue = attribute.getAttributeValue() + 450;
-    }
-
     public void pay(Attributes attributes) {
         this.attributeValue = attributes.getAttributeValue() - 100;
     }
 
-    public void addExp(int exp) {
-        this.attributeValue = attributeValue + exp;
-    }
 }

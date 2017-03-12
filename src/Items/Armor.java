@@ -11,7 +11,7 @@ public enum Armor {
     COMBAT_LIGHT(0.15, "light combat", 3),
     COMBAT_HEAVY(0.4, "heavy combat", 6),
     RANGER_ARMOR(0.6, "ranger combats", 7),
-    EXOSKELETON(0.8, "exoskeleton", 9);
+    EXOSKELETON(0.8, "exoskeleton", 0);
 
 
     private final double defenseRating;

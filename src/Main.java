@@ -37,7 +37,6 @@ public class Main {
     Messages message = new Messages();
     RaiderStories raiderStories = new RaiderStories();
     Character player;
-    GameState state = new GameState();
     int karma = 0;
     int strengthOfTown = 0;
     int strengthOfRaiders = 9;
@@ -294,7 +293,7 @@ public class Main {
     raiderBiggy.setGunInHand(Guns.AXE);
     raiderBiggy.setArmor(HEAVY_METAL);
 
-    raiderAjax = new Character("Ajax", Jobs.RAIDER, raider1Attributes, raider1Guns,
+    raiderAjax = new Character("Ajax", Jobs.RAIDER, raiderJetAttributes, raider1Guns,
             raider1HealthBoosters, raider1Miscellaneous, map.getSquare(66,66));
     raiderAjax.setHealth(300);
     raiderAjax.setGunInHand(Guns.M1);
@@ -327,7 +326,7 @@ public class Main {
         playerGuns.add(Guns.BIG_IRON);
         player = new Character("Rohan", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
-        player.setArmor(SCRAP);
+        player.setArmor(SCRAP);break;
 
       case 2:
         playerAttributes.get(0).setAttributeValue(4);
@@ -338,7 +337,7 @@ public class Main {
         playerGuns.add(Guns.LIGHT_PISTOL);
         player = new Character("Harp", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
-        player.setArmor(LIGHT_METAL);
+        player.setArmor(LIGHT_METAL);break;
 
       case 3:
         playerAttributes.get(0).setAttributeValue(9);
@@ -349,18 +348,18 @@ public class Main {
         playerGuns.add(Guns.SHOTGUN);
         player = new Character("Axel", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
-        player.setArmor(HEAVY_METAL);
+        player.setArmor(HEAVY_METAL);break;
 
       case 4:
         playerAttributes.get(0).setAttributeValue(5);
         playerAttributes.get(1).setAttributeValue(4);
-        playerAttributes.get(2).setAttributeValue(8);
+        playerAttributes.get(2).setAttributeValue(9);
         playerAttributes.get(3).setAttributeValue(0);
-        playerAttributes.get(4).setAttributeValue(7);
+        playerAttributes.get(4).setAttributeValue(6);
         playerGuns.add(Guns.M4);
         player = new Character("Ciara", Jobs.PLAYER, playerAttributes,playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
-        player.setArmor(COMBAT_LIGHT);
+        player.setArmor(COMBAT_LIGHT);break;
 
       default:
         playerAttributes.get(0).setAttributeValue(2);
@@ -370,10 +369,11 @@ public class Main {
         playerAttributes.get(4).setAttributeValue(5);
         playerGuns.add(Guns.LIGHT_PISTOL);
         player = new Character("Rachel", Jobs.PLAYER, playerAttributes, playerGuns,
-            playerHealthBoosters, playerMiscellaneous, position);
+            playerHealthBoosters, playerMiscellaneous, position);break;
     }
 
     FriendlyStories friendlyStories = new FriendlyStories(player);
+    GameState state = new GameState(player);
 
 
 //  HERE IS THE PLAYER
@@ -384,12 +384,13 @@ public class Main {
     System.out.println("You see a figure on the horizon...");
     System.in.read();
     Combat combat = new Combat(player, raider1);
+    raider1.setHealth(50);
     combat.attack();
     System.out.println("What a warm welcome. Lets keep moving.");
     System.in.read();
     System.out.println("You are now free to explore the city and the surroundings.\n" +
             "To proceed through the main story you need to complete the Q marks.\n" +
-            "To try to obtain better equipment you need to go to § signs.\n" +
+            "To try to obtain better equipment you need to go to ! signs.\n" +
             "Galon town is about to get destroyed, go save it!\n");
     player.setHealth(120);
 
@@ -397,6 +398,7 @@ public class Main {
     while (!gameOver) {
       if (!player.isAlive()) {
         gameOver = true;
+        break;
       }
       String move = user_input.next();
       map.getSquare(position.getX(), position.getY()).setC(previousChar);
@@ -649,7 +651,7 @@ public class Main {
             "Find where the main base is.");
         System.out.println("Shit I got spotted! Ah wait, that's a little girl, maybe I can talk my way out?");
         if (player.getAttributes().get(4).getAttributeValue() > 6) {
-          System.out.println("She calmed down and I stole the passcode quite easily. Now the last bastard that needs to be defeated...");
+          System.out.println("She calmed down and I stole the password quite easily. Now the last bastard that needs to be defeated...");
         }
         else {
           friendlyStories.getChildF2();
@@ -839,23 +841,34 @@ public class Main {
       }
 
       if (player.getPosition().equals(map.getSquare(71, 90))) {
-        System.out.println("You found a Revolver. Do you want to use it now? " +
-            "[y/n]");
+        message.randomEncounters();
+        if (player.isAlive()) {
+          System.out.println("You found a Revolver and a combat armor. Do you want to use them now? " +
+                  "[y/n]");
           player.getGuns().add(Guns.REVOLVER);
-        if (user_input.next().equals("y")) {
-          player.setGunInHand(Guns.REVOLVER);
+          if (user_input.next().equals("y")) {
+            player.setGunInHand(Guns.REVOLVER);
+            player.setArmor(COMBAT_LIGHT);
+          }
         }
       }
-
+      else {
+        gameOver = true;
+      }
       if (player.getPosition().equals(map.getSquare(74, 20))) {
-        System.out.println("You found M4. Do you want to use it now? " +
-            "[y/n]");
-        player.getGuns().add(Guns.M4);
-        if (user_input.next().equals("y")) {
-          player.setGunInHand(Guns.M4);
+        message.randomEncounters();
+        if (player.isAlive()) {
+          System.out.println("You found M4. Do you want to use it now? " +
+                  "[y/n]");
+          player.getGuns().add(Guns.M4);
+          if (user_input.next().equals("y")) {
+            player.setGunInHand(Guns.M4);
+          }
         }
       }
-
+      else {
+        gameOver = true;
+      }
 
       if (gameOver) {
         break;

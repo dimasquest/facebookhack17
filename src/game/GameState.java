@@ -8,21 +8,21 @@ import map.Square;
  */
 public class GameState {
 
-    public int exp;
     public Character player;
 
-    public GameState() {
+    public GameState(Character player) {
+        this.player = player;
     }
 
     public void levelUp(int newExp) {
-        if (exp + newExp > 1200) {
+        if (player.getE().getAttributeValue() + newExp > 1200) {
             System.out.println("Level up!");
             player.improveStats();
-            exp = exp + newExp - 1200;
+            player.getE().setAttributeValue(player.getE().getAttributeValue() + newExp - 1200);
             player.incLevel();
         }
         else {
-            exp +=newExp;
+            player.getE().setAttributeValue(player.getE().getAttributeValue() + newExp);
         }
     }
 }

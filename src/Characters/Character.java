@@ -29,7 +29,7 @@ public class Character {
                   List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous, Square position)  {
         this.name = name;
         this.jobTitle = jobTitle;
-        this.health = 100;
+        this.health = 120;
         this.gunInHand = guns.get(0);
         this.attributes = attributes;
         this.guns = guns;
@@ -94,30 +94,30 @@ public class Character {
         this.position = position;
     }
 
+    public Attributes getS() {return attributes.get(0);}
+
+    public Attributes getI() {return attributes.get(1);}
+
+    public Attributes getL() {return attributes.get(2);}
+
+    public Attributes getE() {return attributes.get(3);}
+
+    public Attributes getC() {return attributes.get(4);}
+
+    public Attributes getR() {return attributes.get(5);}
 
     public void improveStats() {
         System.out.println("You leveled up! Choose an attribute to improve.");
         System.out.println("Current: ");
-//        attributes.get(1).incrementAttribute(attributes.get(1));
-//        attributes.get(2).incrementAttribute(attributes.get(2));
-//        attributes.get(3).incrementAttribute(attributes.get(3));
-//        attributes.get(4).incrementAttribute(attributes.get(4));
-//        attributes.get(5).incrementAttribute(attributes.get(5));
+        attributes.get(1).incrementAttribute(attributes.get(1));
+        attributes.get(2).incrementAttribute(attributes.get(2));
+        attributes.get(3).incrementAttribute(attributes.get(3));
+        attributes.get(0).incrementAttribute(attributes.get(0));
+        attributes.get(5).incrementAttribute(attributes.get(5));
+        level++;
+        setHealth(120+10*level);
         showAttributes();
-//        Scanner input = new Scanner(System.in);
-//        switch (input.toString()) {
-//            case "Intelligence": attributes.get(5).incrementAttribute(attributes.get(5)); break;
-//            case "Charisma": attributes.get(2).incrementAttribute(attributes.get(2)); break;
-//            case "Luck": attributes.get(3).incrementAttribute(attributes.get(3)); break;
-//            case "Strength": attributes.get(4).incrementAttribute(attributes.get(4)); break;
-//            default:
-//                System.out.println("Invalid value");
-//                input = new Scanner(System.in);
-//                break;
-//        }
-        System.out.println("New attributes:");
-        showAttributes();
-    }
+        }
 
     public boolean isAlive() {
         return (health > 0);
@@ -139,6 +139,5 @@ public class Character {
 
     public Armor getArmor() {
         return armor;
-
     }
 }

@@ -35,7 +35,7 @@ public class Combat {
         while (player.isAlive() && enemy.isAlive()) {
             System.out.println("You are fighting " + enemy.getName());
             int yourDamage;
-            if (enemy.getAttributes().get(4).getAttributeValue() >= enemy.getArmor().getStrengthRating()) {
+            if (enemy.getAttributes().get(1).getAttributeValue() >= enemy.getArmor().getStrengthRating()) {
                 yourDamage = (int) (player.getGunInHand().getDamage() * (1 - enemy.getArmor().getDefenseRating()));
             } else {
                 yourDamage = player.getGunInHand().getDamage();
@@ -45,7 +45,7 @@ public class Combat {
                     " hp remaining.");
             random = ThreadLocalRandom.current().nextInt(4,11);
             int hisDamage;
-            if (player.getAttributes().get(3).getAttributeValue() > random) {
+            if (player.getAttributes().get(2).getAttributeValue() > random) {
                 System.out.println("Lucky! No damage");
                 hisDamage = 0;
             }
@@ -67,14 +67,14 @@ public class Combat {
             if (enemy.getName().equals("Ajax") || enemy.getName().equals("Jet") ||
                     enemy.getName().equals("Scrum") || enemy.getName().equals("Astra") ||
                     enemy.getName().equals("Biggy") || enemy.getName().equals("Scrum")) {
-                player.getAttributes().get(0).incrementExpBoss(player.getAttributes().get(0));
-                System.out.println("You earned 450 xp. Your current xp is " + player.getAttributes().get(0).getAttributeValue());
+                player.getAttributes().get(3).setAttributeValue(player.getE().getAttributeValue()+450);
+                System.out.println("You earned 450 xp. Your current xp is " + player.getAttributes().get(3).getAttributeValue());
             }
-            player.getAttributes().get(0).incrementExpNormal(player.getAttributes().get(0));
-            System.out.println("You earned 150 xp. Your current xp is " + player.getAttributes().get(0).getAttributeValue());
+            player.getAttributes().get(3).setAttributeValue(player.getE().getAttributeValue()+150);
+            System.out.println("You earned 150 xp. Your current xp is " + player.getAttributes().get(3).getAttributeValue());
         }
         else {
-            System.out.println("You lost. What a cunt.");
+            System.out.println("You lost. What a shame.");
         }
 
 
