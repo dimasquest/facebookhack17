@@ -41,7 +41,8 @@ public class Main {
     System.out.println("\n\n\nEnter the number of your hero:");
 
     GameMap map = new GameMap();
-    Character player, sheriff, bartender, hotelManager, priest, child, raider;
+    Character player, sheriff, bartender, hotelManager, priest, child,
+    raider1, raider2, raider3, raider4;
     char previousChar, nextCharacter;
 
     List<Attributes> playerAttributes = new ArrayList<>();
@@ -160,25 +161,78 @@ public class Main {
         childMiscellaneous, map.getSquare(55, 79));
     child.getPosition().setC('%');
 
-    // Initialise raider
+    // Initialise raiders
+    List<Attributes> raider1Attributes = new ArrayList<>();
+    raider1Attributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
+    raider1Attributes.add(new Attributes(AttributesNames.STRENGTH, 8));
+    raider1Attributes.add(new Attributes(AttributesNames.INTELLIGENCE, 5));
+    raider1Attributes.add(new Attributes(AttributesNames.LUCK, 2));
+    raider1Attributes.add(new Attributes(AttributesNames.CHARISMA, 1));
+    raider1Attributes.add(new Attributes(AttributesNames.REPUTATION, 0));
 
-    List<Attributes> raiderAttributes = new ArrayList<>();
-    raiderAttributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
-    raiderAttributes.add(new Attributes(AttributesNames.STRENGTH, 8));
-    raiderAttributes.add(new Attributes(AttributesNames.INTELLIGENCE, 5));
-    raiderAttributes.add(new Attributes(AttributesNames.LUCK, 2));
-    raiderAttributes.add(new Attributes(AttributesNames.CHARISMA, 1));
-    raiderAttributes.add(new Attributes(AttributesNames.REPUTATION, 0));
+    List<Guns> raider1Guns = new ArrayList<>();
+    raider1Guns.add(Guns.KNIFE);
+    List<HealthRelated> raider1HealthBoosters = new ArrayList<>();
+    List<Miscellaneous> raider1Miscellaneous = new ArrayList<>();
 
-    List<Guns> raiderGuns = new ArrayList<>();
-    raiderGuns.add(Guns.KNIFE);
-    List<HealthRelated> raiderHealthBoosters = new ArrayList<>();
-    List<Miscellaneous> raiderMiscellaneous = new ArrayList<>();
+    raider1 = new Character("Raider 1", Jobs.RAIDER,
+        raider1Attributes, raider1Guns, raider1HealthBoosters,
+        raider1Miscellaneous, map.getSquare(75, 51));
+    raider1.getPosition().setC('^');
 
-    raider = new Character("Raider", Jobs.RAIDER,
-        raiderAttributes, raiderGuns, raiderHealthBoosters,
-        raiderMiscellaneous, map.getSquare(75, 51));
-    raider.getPosition().setC('^');
+    List<Attributes> raider2Attributes = new ArrayList<>();
+    raider2Attributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
+    raider2Attributes.add(new Attributes(AttributesNames.STRENGTH, 8));
+    raider2Attributes.add(new Attributes(AttributesNames.INTELLIGENCE, 5));
+    raider2Attributes.add(new Attributes(AttributesNames.LUCK, 2));
+    raider2Attributes.add(new Attributes(AttributesNames.CHARISMA, 1));
+    raider2Attributes.add(new Attributes(AttributesNames.REPUTATION, 0));
+
+    List<Guns> raider2Guns = new ArrayList<>();
+    raider2Guns.add(Guns.KNIFE);
+    List<HealthRelated> raider2HealthBoosters = new ArrayList<>();
+    List<Miscellaneous> raider2Miscellaneous = new ArrayList<>();
+
+    raider2 = new Character("Raider 2", Jobs.RAIDER,
+        raider2Attributes, raider2Guns, raider2HealthBoosters,
+        raider2Miscellaneous, map.getSquare(50, 49));
+    raider2.getPosition().setC('^');
+
+    List<Attributes> raider3Attributes = new ArrayList<>();
+    raider3Attributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
+    raider3Attributes.add(new Attributes(AttributesNames.STRENGTH, 8));
+    raider3Attributes.add(new Attributes(AttributesNames.INTELLIGENCE, 5));
+    raider3Attributes.add(new Attributes(AttributesNames.LUCK, 2));
+    raider3Attributes.add(new Attributes(AttributesNames.CHARISMA, 1));
+    raider3Attributes.add(new Attributes(AttributesNames.REPUTATION, 0));
+
+    List<Guns> raider3Guns = new ArrayList<>();
+    raider3Guns.add(Guns.KNIFE);
+    List<HealthRelated> raider3HealthBoosters = new ArrayList<>();
+    List<Miscellaneous> raider3Miscellaneous = new ArrayList<>();
+
+    raider3 = new Character("Raider 3", Jobs.RAIDER,
+        raider3Attributes, raider3Guns, raider3HealthBoosters,
+        raider3Miscellaneous, map.getSquare(51, 135));
+    raider3.getPosition().setC('^');
+
+    List<Attributes> raider4Attributes = new ArrayList<>();
+    raider4Attributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
+    raider4Attributes.add(new Attributes(AttributesNames.STRENGTH, 8));
+    raider4Attributes.add(new Attributes(AttributesNames.INTELLIGENCE, 5));
+    raider4Attributes.add(new Attributes(AttributesNames.LUCK, 2));
+    raider4Attributes.add(new Attributes(AttributesNames.CHARISMA, 1));
+    raider4Attributes.add(new Attributes(AttributesNames.REPUTATION, 0));
+
+    List<Guns> raider4Guns = new ArrayList<>();
+    raider4Guns.add(Guns.KNIFE);
+    List<HealthRelated> raider4HealthBoosters = new ArrayList<>();
+    List<Miscellaneous> raider4Miscellaneous = new ArrayList<>();
+
+    raider4 = new Character("Raider 4", Jobs.RAIDER,
+        raider4Attributes, raider4Guns, raider4HealthBoosters,
+        raider4Miscellaneous, map.getSquare(79, 117));
+    raider4.getPosition().setC('^');
 
     // Initialise player
     int n = user_input.nextInt();
