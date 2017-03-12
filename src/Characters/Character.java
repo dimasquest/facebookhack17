@@ -3,6 +3,7 @@ package Characters;
 import Items.Guns;
 import Items.HealthRelated;
 import Items.Miscellaneous;
+import items.Armor;
 import map.Square;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class Character {
     private Square position;
     private boolean isAlive;
     private int damage;
+    private Armor armor;
 
     public Character(String name, Jobs jobTitle, List<Attributes> attributes, List<Guns> guns,
                   List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous, Square position)  {
@@ -38,6 +40,7 @@ public class Character {
         this.position = position;
         this.isAlive = true;
         this.damage = gunInHand.getDamage();
+        this.armor = Armor.LEATHER;
     }
 
     public String getName() {
