@@ -29,6 +29,7 @@ public class FriendlyStories extends NPCStories {
     private String cit2;
     private String cit3;
 
+
     public void getSheriff() {
         sheriff = "Tall man in his 50s with a S&W on his hip and a 1887 behind the back. The most honest man in the wasteland\n" +
                 "and you ought to be in good relationship with him. Or trouble.";

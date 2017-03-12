@@ -6,6 +6,7 @@ import Items.Miscellaneous;
 import map.Square;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by dimarammfire on 11.03.17.
@@ -22,19 +23,21 @@ public class Character {
     private final List<Miscellaneous> miscellaneous;
     private Square position;
     private boolean isAlive;
+    private int damage;
 
     public Character(String name, Jobs jobTitle, List<Attributes> attributes, List<Guns> guns,
                   List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous, Square position)  {
         this.name = name;
         this.jobTitle = jobTitle;
         this.health = 100;
-        this.gunInHand = Guns.NONE;
+        this.gunInHand = guns.get(0);
         this.attributes = attributes;
         this.guns = guns;
         this.healthBoosters = healthBoosters;
         this.miscellaneous = miscellaneous;
         this.position = position;
         this.isAlive = true;
+        this.damage = gunInHand.getDamage();
     }
 
     public String getName() {
@@ -91,9 +94,32 @@ public class Character {
 
 
     public void improveStats() {
+        System.out.println("You leveled up! Choose an attribute to improve.");
+        System.out.println("Current: ");
+        showAttributes();
+        Scanner input = new Scanner(System.in);
+        switch (input.toString()) {
+            case "Intelligence": attributes.get(5).incrementAttribute(attributes.get(5)); break;
+            case "Charisma": attributes.get(2).incrementAttribute(attributes.get(2)); break;
+            case "Luck": attributes.get(3).incrementAttribute(attributes.get(3)); break;
+            case "Strength": attributes.get(4).incrementAttribute(attributes.get(4)); break;
+            default:
+                System.out.println("Invalid value");
+                input = new Scanner(System.in);
+                break;
+        }
+        System.out.println("New attributes:");
+        showAttributes();
+        attributes.get(0).setAttributeValue(0);
     }
 
     public boolean isAlive() {
         return (health > 0);
+    }
+
+    public void showAttributes() {
+        System.out.println("Your attributes are: Experience " + attributes.get(0) +", Reputation " + attributes.get(1) +
+        ", Charisma " + attributes.get(2) + ", Luck " + attributes.get(3) + ", Strength " + attributes.get(4) +
+        ", Intelligence " + attributes.get(5));
     }
 }
