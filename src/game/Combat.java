@@ -33,19 +33,32 @@ public class Combat {
         System.in.read();
         int random = ThreadLocalRandom.current().nextInt(4,11);
         while (player.isAlive() && enemy.isAlive()) {
+            System.out.println("You are fighting " + enemy.getName());
+            int yourDamage;
+            if (enemy.getAttributes().get(4).getAttributeValue() >= enemy.getArmor().getStrengthRating()) {
+                yourDamage = (int) (player.getGunInHand().getDamage() * (1 - enemy.getArmor().getDefenseRating()));
+            } else {
+                yourDamage = player.getGunInHand().getDamage();
+            }
+            enemy.setHealth(enemy.getHealth() - yourDamage);
+            System.out.println("Your attack was " + yourDamage+ " and " + "the enemy has " + enemy.getHealth() +
+                    " hp remaining.");
+            random = ThreadLocalRandom.current().nextInt(4,11);
+            int hisDamage;
             if (player.getAttributes().get(3).getAttributeValue() > random) {
                 System.out.println("Lucky! No damage");
+                hisDamage = 0;
             }
             else {
-                player.setHealth(player.getHealth() - enemy.getGunInHand().getDamage());
+                if (player.getAttributes().get(4).getAttributeValue() >= player.getArmor().getStrengthRating()) {
+                    hisDamage = (int) (enemy.getGunInHand().getDamage() * (1 - player.getArmor().getDefenseRating()));
+                } else {
+                    hisDamage = enemy.getGunInHand().getDamage();
+                }
+                player.setHealth(player.getHealth() - hisDamage);
+                System.out.println(enemy.getName() + " caused you " + hisDamage + " damage." +
+                        " You have " + player.getHealth()+ " hp remaining.");
             }
-            enemy.setHealth(enemy.getHealth() - player.getGunInHand().getDamage());
-            random = ThreadLocalRandom.current().nextInt(4,11);
-            System.out.println("You are fighting " + enemy.getName());
-            System.out.println("Your attack was " + player.getGunInHand().getDamage()+ " and " +
-                    "the enemy has " + enemy.getHealth()+ " hp remaining.");
-            System.out.println(enemy.getName() + " caused you " + enemy.getGunInHand().getDamage() + " damage." +
-                    " You have " + player.getHealth()+ " hp remaining.");
             System.out.println("Press enter to keep fighting:");
             System.in.read();
         }
