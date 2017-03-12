@@ -9,6 +9,7 @@ import game.Combat;
 import map.GameMap;
 import map.Square;
 import messages.StartStory;
+import quests.MainQuest;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,9 +43,11 @@ public class Main {
     System.out.println("\n\n\nEnter the number of your hero:");
 
     GameMap map = new GameMap();
-    Character player, sheriff, bartender, hotelManager, priest, child,
+    Character player = null;
+    Character sheriff, bartender, hotelManager, priest, child,
     raider1, raider2, raider3, raider4;
     char previousChar, nextCharacter;
+    MainQuest quest;
 
     List<Attributes> playerAttributes = new ArrayList<>();
     playerAttributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
@@ -287,6 +290,9 @@ public class Main {
         player = new Character("Rachel", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
     }
+
+
+
     map.getSquare(89, 50).setC('*');
     map.display();
     Combat combat = new Combat(player, raider);
@@ -307,6 +313,7 @@ public class Main {
           previousChar = map.getSquare(position.getX() - 1, position.getY())
               .getC();
           map.setSquare(position.getX(), position.getY(), -1, 0);
+          player.setPosition(map.getSquare(position.getX() - 1, position.getY()));
           position = map.getSquare(position.getX() - 1, position.getY());
           map.display();
           break;
@@ -319,6 +326,8 @@ public class Main {
           previousChar = map.getSquare(position.getX(), position.getY() - 1)
               .getC();
           map.setSquare(position.getX(), position.getY(), 0, -1);
+          player.setPosition(map.getSquare(position.getX(), position.getY() -
+          1));
           position = map.getSquare(position.getX(), position.getY() - 1);
           map.display();
           break;
@@ -331,10 +340,12 @@ public class Main {
           previousChar = map.getSquare(position.getX() + 1, position.getY())
               .getC();
           map.setSquare(position.getX(), position.getY(), 1, 0);
+          player.setPosition(map.getSquare(position.getX() + 1, position
+              .getY()));
           position = map.getSquare(position.getX() + 1, position.getY());
           map.display();
           break;
-        case "d":
+        default: //case "d":
           if (!map.isValidMove(position.getX(), position.getY() + 1)) {
             System.out.println("This is not a valid move. Please try another " +
                 "one!");
@@ -343,10 +354,49 @@ public class Main {
           previousChar = map.getSquare(position.getX(), position.getY() + 1)
               .getC();
           map.setSquare(position.getX(), position.getY(), 0, 1);
+          player.setPosition(map.getSquare(position.getX(), position.getY() +
+          1));
           position = map.getSquare(position.getX(), position.getY() + 1);
           map.display();
           break;
       }
+
+      if (player.getPosition().equals(map.getSquare(82, 49))) {
+        quest = new MainQuest("To the gates!", 500,
+            "Enemies are storming into the city, protect it!");
+      }
+
+      if (player.getPosition().equals(map.getSquare(51, 49))) {
+        quest = new MainQuest("Who is this guy?",
+            750,
+            "Find a way to identify the stranger.");
+      }
+
+      if (player.getPosition().equals(map.getSquare(65, 60))) {
+        quest = new MainQuest("Identify the " +
+            "traitor", 1000,
+            "There is definitely a traitor amongst us. Find out who that is.");
+      }
+
+      if (player.getPosition().equals(map.getSquare(61, 40))) {
+        quest = new MainQuest("Protect the town", 1500,
+            "The town is on fire! Protect it!");
+      }
+
+      if (player.getPosition().equals(map.getSquare(49, 118))) {
+        quest = new MainQuest("Clear the ruins", 2000,
+            "Defeat the raiders in the ruins. That is their base.");
+      }
+
+      if (player.getPosition().equals(map.getSquare(79, 90))) {
+        quest = new MainQuest("Find raider HQ", 1000,
+            "Find where the main base is.");
+      }
+      if (player.getPosition().equals(map.getSquare(82, 25))) {
+        quest = new MainQuest("Something ends, something begins", 3000,
+            "Defeat the raiders in the last battle for the Wasteland!");
+      }
+
       if (gameOver) {
         break;
       }
