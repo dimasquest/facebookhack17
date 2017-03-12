@@ -37,13 +37,13 @@ public class MainQuest extends Quest {
         System.out.println(description);
     }
 
-    public void buildMainQuestLine() {
-        listOfMainQuests.add(defendTheGate);
-        listOfMainQuests.add(findWhoTheGuestIs);
-        listOfMainQuests.add(findTheTraintor);
-        listOfMainQuests.add(defendTheTown);
-        listOfMainQuests.add(clearTheRuins);
-        listOfMainQuests.add(findTheBase);
-        listOfMainQuests.add(defeatOnceAndForAll);
-    }
+//    public void buildMainQuestLine() {
+//        listOfMainQuests.add(defendTheGate);
+//        listOfMainQuests.add(findWhoTheGuestIs);
+//        listOfMainQuests.add(findTheTraintor);
+//        listOfMainQuests.add(defendTheTown);
+//        listOfMainQuests.add(clearTheRuins);
+//        listOfMainQuests.add(findTheBase);
+//        listOfMainQuests.add(defeatOnceAndForAll);
+//    }
 }

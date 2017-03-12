@@ -22,19 +22,21 @@ public class Character {
     private final List<Miscellaneous> miscellaneous;
     private Square position;
     private boolean isAlive;
+    private int damage;
 
     public Character(String name, Jobs jobTitle, List<Attributes> attributes, List<Guns> guns,
                   List<HealthRelated> healthBoosters, List<Miscellaneous> miscellaneous, Square position)  {
         this.name = name;
         this.jobTitle = jobTitle;
         this.health = 100;
-        this.gunInHand = Guns.NONE;
+        this.gunInHand = Guns.KNIFE;
         this.attributes = attributes;
         this.guns = guns;
         this.healthBoosters = healthBoosters;
         this.miscellaneous = miscellaneous;
         this.position = position;
         this.isAlive = true;
+        this.damage = gunInHand.getDamage();
     }
 
     public String getName() {

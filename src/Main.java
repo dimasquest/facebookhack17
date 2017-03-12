@@ -5,6 +5,7 @@ import Characters.Jobs;
 import Items.Guns;
 import Items.HealthRelated;
 import Items.Miscellaneous;
+import game.Combat;
 import map.GameMap;
 import map.Square;
 import messages.StartStory;
@@ -222,7 +223,7 @@ public class Main {
         player = new Character("Ciara", Jobs.PLAYER, playerAttributes,playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
 
-      case 5:
+      default:
         playerAttributes.get(1).setAttributeValue(2);
         playerAttributes.get(2).setAttributeValue(9);
         playerAttributes.get(3).setAttributeValue(3);
@@ -234,6 +235,9 @@ public class Main {
     }
     map.getSquare(89, 50).setC('*');
     map.display();
+    Combat combat = new Combat(player, raider);
+    combat.attack();
+
 
     boolean gameOver = false;
     while (!gameOver) {
