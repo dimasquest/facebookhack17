@@ -305,6 +305,10 @@ public class Main {
     combat.attack();
     System.out.println("What a warm welcome. Lets keep moving.");
     System.in.read();
+    System.out.println("You are now free to explore the city and the surroundings.\n" +
+            "To proceed through the main story you need to complete the Q marks.\n" +
+            "To try to obtain better equipment you need to go to § signs.\n" +
+            "Galon town is about to get destroyed, go save it!\n");
 
 
     boolean gameOver = false;
@@ -384,6 +388,7 @@ public class Main {
         quest = new MainQuest("Identify the " +
             "traitor", 1000,
             "There is definitely a traitor amongst us. Find out who that is.");
+        System.out.println();
       }
 
       if (player.getPosition().equals(map.getSquare(61, 40))) {
