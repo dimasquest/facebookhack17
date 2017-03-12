@@ -1,9 +1,6 @@
 package Characters;
 
-import Items.Guns;
-import Items.HealthRelated;
-import Items.Miscellaneous;
-import items.Armor;
+import Items.*;
 import map.Square;
 
 import java.util.List;
