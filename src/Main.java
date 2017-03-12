@@ -292,11 +292,17 @@ public class Main {
     }
 
 
-
+//  HERE IS THE PLAYER
+    player.showAttributes();
+    System.in.read();
     map.getSquare(89, 50).setC('*');
     map.display();
-    Combat combat = new Combat(player, raider);
+    System.out.println("You see a figure on the horizon...");
+    System.in.read();
+    Combat combat = new Combat(player, raider1);
     combat.attack();
+    System.out.println("What a warm welcome. Lets keep moving.");
+    System.in.read();
 
 
     boolean gameOver = false;
