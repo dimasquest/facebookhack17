@@ -326,8 +326,13 @@ public class Main {
         playerGuns.add(Guns.BIG_IRON);
         player = new Character("Rohan", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
+<<<<<<< HEAD
         player.setArmor(SCRAP);break;
 
+=======
+        player.setArmor(SCRAP);
+        break;
+>>>>>>> 97fa80413b50b99a42229d93b152f2f6d5121266
       case 2:
         playerAttributes.get(0).setAttributeValue(4);
         playerAttributes.get(1).setAttributeValue(7);
@@ -337,8 +342,13 @@ public class Main {
         playerGuns.add(Guns.LIGHT_PISTOL);
         player = new Character("Harp", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
+<<<<<<< HEAD
         player.setArmor(LIGHT_METAL);break;
 
+=======
+        player.setArmor(LIGHT_METAL);
+        break;
+>>>>>>> 97fa80413b50b99a42229d93b152f2f6d5121266
       case 3:
         playerAttributes.get(0).setAttributeValue(9);
         playerAttributes.get(1).setAttributeValue(5);
@@ -348,8 +358,13 @@ public class Main {
         playerGuns.add(Guns.SHOTGUN);
         player = new Character("Axel", Jobs.PLAYER, playerAttributes, playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
+<<<<<<< HEAD
         player.setArmor(HEAVY_METAL);break;
 
+=======
+        player.setArmor(HEAVY_METAL);
+        break;
+>>>>>>> 97fa80413b50b99a42229d93b152f2f6d5121266
       case 4:
         playerAttributes.get(0).setAttributeValue(5);
         playerAttributes.get(1).setAttributeValue(4);
@@ -359,8 +374,13 @@ public class Main {
         playerGuns.add(Guns.M4);
         player = new Character("Ciara", Jobs.PLAYER, playerAttributes,playerGuns,
             playerHealthBoosters, playerMiscellaneous, position);
+<<<<<<< HEAD
         player.setArmor(COMBAT_LIGHT);break;
 
+=======
+        player.setArmor(COMBAT_LIGHT);
+        break;
+>>>>>>> 97fa80413b50b99a42229d93b152f2f6d5121266
       default:
         playerAttributes.get(0).setAttributeValue(2);
         playerAttributes.get(1).setAttributeValue(9);
