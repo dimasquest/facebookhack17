@@ -391,6 +391,9 @@ public class Main {
 
     boolean gameOver = false;
     while (!gameOver) {
+      if (!player.isAlive()) {
+        gameOver = true;
+      }
       String move = user_input.next();
       map.getSquare(position.getX(), position.getY()).setC(previousChar);
       switch (move) {
@@ -669,7 +672,13 @@ public class Main {
         System.out.println("I got their leader! But when I was here, they attacked the town... I hope my friends were prepared...");
         strengthOfRaiders--;
         strengthOfRaiders--;
-        gameOver = finalS.finalBattleCheck(strengthOfTown, strengthOfRaiders, karma);
+        if (player.isAlive()) {
+          gameOver = finalS.finalBattleCheck(strengthOfTown, strengthOfRaiders, karma);
+        }
+        else {
+          gameOver = true;
+          break;
+        }
       }
 
       // Add SecondaryQuests
