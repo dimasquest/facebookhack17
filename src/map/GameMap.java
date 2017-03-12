@@ -6,7 +6,7 @@ package map;
 
 public class GameMap {
 
-  private Square[][] map = new Square[90][160];
+  private Square[][] map = new Square[90][200];
 
   public Square getSquare(int i, int j) {
     return map[i][j];
@@ -17,12 +17,12 @@ public class GameMap {
   }
 
   public boolean isValidMove(int i, int j) {
-    return 0 <= i && i < 90 && 0 <= j && j < 160;
+    return 30 <= i && i < 90 && 0 <= j && j < 160;
   }
 
   public GameMap() {
     for (int i = 0; i < 90; i++) {
-      for (int j = 0; j < 160; j++) {
+      for (int j = 0; j < 200; j++) {
         this.map[i][j] = new Square(i, j);
       }
     }
@@ -290,13 +290,176 @@ public class GameMap {
     this.map[46][19].setC('q');
     this.map[47][80].setC('q');
 
+    // Get new guns
     this.map[71][90].setC('!');
     this.map[74][20].setC('!');
+
+    // Legend
+    for (int j = 165; j <= 199; j++) {
+      this.map[40][j].setC('-');
+      this.map[80][j].setC('-');
+    }
+    for (int i = 41; i < 80; i++) {
+      this.map[i][165].setC('|');
+      this.map[i][199].setC('|');
+    }
+
+    this.map[42][179].setC('L');
+    this.map[42][180].setC('E');
+    this.map[42][181].setC('G');
+    this.map[42][182].setC('E');
+    this.map[42][183].setC('N');
+    this.map[42][184].setC('D');
+
+    this.map[48][170].setC('Q');
+    this.map[48][171].setC(' ');
+    this.map[48][172].setC('-');
+    this.map[48][173].setC(' ');
+    this.map[48][174].setC('M');
+    this.map[48][175].setC('a');
+    this.map[48][176].setC('i');
+    this.map[48][177].setC('n');
+    this.map[48][178].setC(' ');
+    this.map[48][179].setC('Q');
+    this.map[48][180].setC('u');
+    this.map[48][181].setC('e');
+    this.map[48][182].setC('s');
+    this.map[48][183].setC('t');
+
+    this.map[49][170].setC('q');
+    this.map[49][171].setC(' ');
+    this.map[49][172].setC('-');
+    this.map[49][173].setC(' ');
+    this.map[49][174].setC('S');
+    this.map[49][175].setC('e');
+    this.map[49][176].setC('c');
+    this.map[49][177].setC('o');
+    this.map[49][178].setC('n');
+    this.map[49][179].setC('d');
+    this.map[49][180].setC('a');
+    this.map[49][181].setC('r');
+    this.map[49][182].setC('y');
+    this.map[49][183].setC(' ');
+    this.map[49][184].setC('Q');
+    this.map[49][185].setC('u');
+    this.map[49][186].setC('e');
+    this.map[49][187].setC('s');
+    this.map[49][188].setC('t');
+
+    this.map[51][170].setC('*');
+    this.map[51][171].setC(' ');
+    this.map[51][172].setC('-');
+    this.map[51][173].setC(' ');
+    this.map[51][174].setC('Y');
+    this.map[51][175].setC('o');
+    this.map[51][176].setC('u');
+    this.map[51][177].setC('r');
+    this.map[51][178].setC(' ');
+    this.map[51][179].setC('P');
+    this.map[51][180].setC('l');
+    this.map[51][181].setC('a');
+    this.map[51][182].setC('y');
+    this.map[51][183].setC('e');
+    this.map[51][184].setC('r');
+
+    this.map[52][170].setC('^');
+    this.map[52][171].setC(' ');
+    this.map[52][172].setC('-');
+    this.map[52][173].setC(' ');
+    this.map[52][174].setC('R');
+    this.map[52][175].setC('a');
+    this.map[52][176].setC('i');
+    this.map[52][177].setC('d');
+    this.map[52][178].setC('e');
+    this.map[52][179].setC('r');
+
+    this.map[53][170].setC('+');
+    this.map[53][171].setC(' ');
+    this.map[53][172].setC('-');
+    this.map[53][173].setC(' ');
+    this.map[53][174].setC('P');
+    this.map[53][175].setC('r');
+    this.map[53][176].setC('i');
+    this.map[53][177].setC('e');
+    this.map[53][178].setC('s');
+    this.map[53][179].setC('t');
+
+    this.map[54][170].setC('$');
+    this.map[54][171].setC(' ');
+    this.map[54][172].setC('-');
+    this.map[54][173].setC(' ');
+    this.map[54][174].setC('B');
+    this.map[54][175].setC('a');
+    this.map[54][176].setC('r');
+    this.map[54][177].setC('t');
+    this.map[54][178].setC('e');
+    this.map[54][179].setC('n');
+    this.map[54][180].setC('d');
+    this.map[54][181].setC('e');
+    this.map[54][182].setC('r');
+
+    this.map[55][170].setC('@');
+    this.map[55][171].setC(' ');
+    this.map[55][172].setC('-');
+    this.map[55][173].setC(' ');
+    this.map[55][174].setC('S');
+    this.map[55][175].setC('h');
+    this.map[55][176].setC('e');
+    this.map[55][177].setC('r');
+    this.map[55][178].setC('i');
+    this.map[55][179].setC('f');
+    this.map[55][180].setC('f');
+
+    this.map[56][170].setC('%');
+    this.map[56][171].setC(' ');
+    this.map[56][172].setC('-');
+    this.map[56][173].setC(' ');
+    this.map[56][174].setC('C');
+    this.map[56][175].setC('h');
+    this.map[56][176].setC('i');
+    this.map[56][177].setC('l');
+    this.map[56][178].setC('d');
+
+    this.map[57][170].setC('&');
+    this.map[57][171].setC(' ');
+    this.map[57][172].setC('-');
+    this.map[57][173].setC(' ');
+    this.map[57][174].setC('H');
+    this.map[57][175].setC('o');
+    this.map[57][176].setC('t');
+    this.map[57][177].setC('e');
+    this.map[57][178].setC('l');
+    this.map[57][179].setC(' ');
+    this.map[57][180].setC('M');
+    this.map[57][181].setC('a');
+    this.map[57][182].setC('n');
+    this.map[57][183].setC('a');
+    this.map[57][184].setC('g');
+    this.map[57][185].setC('e');
+    this.map[57][186].setC('r');
+
+    this.map[59][170].setC('!');
+    this.map[59][171].setC(' ');
+    this.map[59][172].setC('-');
+    this.map[59][173].setC(' ');
+    this.map[59][174].setC('G');
+    this.map[59][175].setC('e');
+    this.map[59][176].setC('t');
+    this.map[59][177].setC(' ');
+    this.map[59][178].setC('A');
+    this.map[59][179].setC(' ');
+    this.map[59][180].setC('N');
+    this.map[59][181].setC('e');
+    this.map[59][182].setC('w');
+    this.map[59][183].setC(' ');
+    this.map[59][184].setC('G');
+    this.map[59][185].setC('u');
+    this.map[59][186].setC('n');
   }
 
   public void display() {
     for (int i = 0; i < 90; i++) {
-      for (int j = 0; j < 160; j++) {
+      for (int j = 0; j < 200; j++) {
         System.out.print(map[i][j].getC());
       }
       System.out.println();
