@@ -20,9 +20,10 @@ public class Messages {
 
     public void needHealing(Character player) {
         Scanner input = new Scanner(System.in);
+        String in = input.next();
         if (player.getHealth() < 50) {
             System.out.println("You need meds! Do you want to spend 100 xp to heal?");
-            if (input.toString().equals("y")) {
+            if (in.equals("y")) {
                 player.setHealth(110);
                 player.getAttributes().get(0).pay(player.getAttributes().get(0));
             }
@@ -35,6 +36,7 @@ public class Messages {
         Combat combat = new Combat(player, enemy);
         if (random == 0) {
             System.out.println("Ambush! Get ready for a fight!");
+            enemy.setHealth(100);
             combat.attack();
         }
         else if (random == 1) {
