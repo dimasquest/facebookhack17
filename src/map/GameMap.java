@@ -1,5 +1,7 @@
 package map;
 
+import quests.SecondaryQuest;
+
 /**
  * Created by irinadanes on 11/03/17.
  */
@@ -13,7 +15,7 @@ public class GameMap {
   }
 
   public void setSquare(int x, int y, int a, int b) {
-    map[x + a][y+b].setC('*');
+    map[x + a][y + b].setC('*');
   }
 
   public boolean isValidMove(int i, int j) {
@@ -128,7 +130,7 @@ public class GameMap {
     this.map[60][80].setC('S');
     this.map[60][81].setC('E');
 
-  // House 3
+    // House 3
     for (int j = 73; j <= 85; j++) {
       this.map[64][j].setC('-');
       this.map[68][j].setC('-');
@@ -182,7 +184,7 @@ public class GameMap {
       this.map[69][j].setC('-');
       this.map[85][j].setC('-');
     }
-    for (int i = 70; i < 85; i ++) {
+    for (int i = 70; i < 85; i++) {
       this.map[i][120].setC('|');
       this.map[i][145].setC('|');
     }
@@ -232,12 +234,12 @@ public class GameMap {
     this.map[81][139].setC('_');
     this.map[81][141].setC('_');
 
-  // Ruins
+    // Ruins
     for (int j = 120; j <= 150; j++) {
       this.map[40][j].setC('-');
       this.map[60][j].setC('-');
     }
-    for (int i = 41; i < 60; i ++) {
+    for (int i = 41; i < 60; i++) {
       this.map[i][120].setC('|');
       this.map[i][150].setC('|');
     }
@@ -260,7 +262,7 @@ public class GameMap {
     this.map[50][143].setC('N');
 
     // Ranch
-    for (int j = 5; j <= 40; j ++) {
+    for (int j = 5; j <= 40; j++) {
       this.map[75][j].setC('-');
       this.map[85][j].setC('-');
     }
@@ -460,12 +462,38 @@ public class GameMap {
   public void display() {
     for (int i = 0; i < 90; i++) {
       for (int j = 0; j < 200; j++) {
-        System.out.print(map[i][j].getC());
+        if (j > 160) {
+          System.out.print("\u001B[36m" + map[i][j].getC() + "\u001B[0m");
+        } else {
+          switch (map[i][j].getC()) {
+            case 'Q':
+            case 'q':
+              System.out.print("\u001B[31m" + 'Q' + "\u001B[0m");
+              break;
+            case '+':
+            case '@':
+            case '%':
+            case '&':
+            case '^':
+            case '$':
+              System.out.print("\u001B[33m" + map[i][j].getC() +
+                  "\u001B[0m");
+              break;
+            case '!':
+              System.out.print("\u001B[32m" + '!' + "\u001B[0m");
+              break;
+            case '*':
+              System.out.print("\u001B[36m" + '*' + "\u001B[0m");
+              break;
+            default:
+              System.out.print(map[i][j].getC());
+              break;
+          }
+        }
       }
       System.out.println();
     }
   }
-
 
 
 }
