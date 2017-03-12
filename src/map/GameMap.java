@@ -282,6 +282,14 @@ public class GameMap {
     this.map[79][90].setC('Q');
     this.map[61][40].setC('Q');
     this.map[82][25].setC('Q');
+
+    this.map[53][65].setC('q');
+    this.map[79][116].setC('q');
+    this.map[42][40].setC('q');
+    this.map[62][109].setC('q');
+    this.map[46][19].setC('q');
+    this.map[47][80].setC('q');
+
   }
 
   public void display() {
