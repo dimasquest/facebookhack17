@@ -40,6 +40,7 @@ public class Main {
     int karma = 0;
     int strengthOfTown = 0;
     int strengthOfRaiders = 9;
+    String input;
 
 
     System.in.read();
@@ -279,18 +280,18 @@ public class Main {
     raiderJet.setHealth(130);
 
     raiderScrum = new Character("Scrum", Jobs.RAIDER, raider1Attributes, raider1Guns,
-            raider1HealthBoosters, raider1Miscellaneous, map.getSquare(66,66));
+            raider1HealthBoosters, raider1Miscellaneous, map.getSquare(30,30));
     raiderScrum.setHealth(160);
     raiderScrum.setGunInHand(Guns.SHOTGUN);
     raiderScrum.setArmor(SCRAP);
 
-    raiderBiggy = new Character("Scrum", Jobs.RAIDER, raider1Attributes, raider1Guns,
-            raider1HealthBoosters, raider1Miscellaneous, map.getSquare(100,87));
+    raiderBiggy = new Character("Biggy", Jobs.RAIDER, raider1Attributes, raider1Guns,
+            raider1HealthBoosters, raider1Miscellaneous, map.getSquare(89,87));
     raiderBiggy.setHealth(200);
     raiderBiggy.setGunInHand(Guns.AXE);
     raiderBiggy.setArmor(HEAVY_METAL);
 
-    raiderAjax = new Character("Scrum", Jobs.RAIDER, raider1Attributes, raider1Guns,
+    raiderAjax = new Character("Ajax", Jobs.RAIDER, raider1Attributes, raider1Guns,
             raider1HealthBoosters, raider1Miscellaneous, map.getSquare(66,66));
     raiderAjax.setHealth(300);
     raiderAjax.setGunInHand(Guns.M1);
@@ -500,9 +501,44 @@ public class Main {
         friendlyStories.getChildM();
         System.out.println("I can only investigate one of them, the others will get scared and run off.\n" +
                 "Who will that be? b/g");
-        user_input = new Scanner(System.in);
-        if (user_input.toString().equals("b")) {
-          
+        input = user_input.next();
+        if (input.equals("b")) {
+          System.out.println("Boy led me right into the ambush! Jet himself!");
+          combat.setEnemy(raiderJet);
+          System.out.println("Hard fight, minus one of raider leaders. Still no idea who the traitor is...\n" +
+                  "This boy will tell me whether he wants it or not!");
+          strengthOfRaiders--;
+          if (player.getAttributes().get(4).getAttributeValue() > 7) {
+            System.out.println("Fuck, I'm not sure he is alive anymore... I was a bit too eager to get the info...");
+            karma--;
+          }
+          else {
+            System.out.println("Only a couple of threats and he told me all about these pricks.\n" +
+                    "Mayor was an obvious one, but this kiddo Jeff with him? \n" +
+                    "Would have never thought. I'll investigate him personally...");
+            friendlyStories.getSecurity();
+            System.in.read();
+            System.out.println("Should I force him to talk or just ask him nicely? f/c");
+            input = user_input.next();
+            if (input.equals("f") && player.getAttributes().get(4).getAttributeValue() > 6) {
+              System.out.println("Wasn't too hard. They use the church basement to get the illegal goods into the town \n" +
+                      "alongside with the infiltrators. Sheriff needs to know.");
+              strengthOfRaiders--;
+              state.levelUp(1000);
+            }
+            else if (input.equals("c") && player.getAttributes().get(2).getAttributeValue() > 6) {
+              System.out.println("Wasn't too hard. They use the church basement to get the illegal goods into the town \n" +
+                      "alongside with the infiltrators. Sheriff needs to know.");
+              strengthOfRaiders--;
+              state.levelUp(1000);
+              karma++;
+            }
+            else {
+              System.out.println("He decided that a bullet in a head is a better idea than talking, well that's another opportunity missed...");
+              strengthOfTown--;
+              state.levelUp(1000);
+            }
+          }
         }
       }
 
