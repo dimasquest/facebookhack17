@@ -10,6 +10,7 @@ import map.GameMap;
 import map.Square;
 import messages.StartStory;
 import quests.MainQuest;
+import quests.SecondaryQuest;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class Main {
     raider1, raider2, raider3, raider4;
     char previousChar, nextCharacter;
     MainQuest quest;
+    SecondaryQuest secQuest;
 
     List<Attributes> playerAttributes = new ArrayList<>();
     playerAttributes.add(new Attributes(AttributesNames.EXPERIENCE, 0));
@@ -402,6 +404,33 @@ public class Main {
         quest = new MainQuest("Something ends, something begins", 3000,
             "Defeat the raiders in the last battle for the Wasteland!");
       }
+
+      // Add SecondaryQuests
+      if (player.getPosition().equals(map.getSquare(53, 65))) {
+        secQuest = new SecondaryQuest("Observer", 100,
+            "Walk around and check if anyone needs help.");
+      }
+      if (player.getPosition().equals(map.getSquare(79, 116))) {
+        secQuest = new SecondaryQuest("Deal with the wounded raider", 150,
+            "Decide what to do with this raider scum");
+      }
+      if (player.getPosition().equals(map.getSquare(42, 40))) {
+        secQuest = new SecondaryQuest("Find Nasko's son", 300,
+            "Look for Nasko's son. Nasko's son needs to be alive.");
+      }
+      if (player.getPosition().equals(map.getSquare(62, 109))) {
+      secQuest = new SecondaryQuest("Find stolen ammo", 250,
+          "Find out what has happened to the ammunition.");
+      }
+      if (player.getPosition().equals(map.getSquare(46, 19))) {
+      secQuest = new SecondaryQuest("Find Orson", 500,
+          "Find out what happened to Orson Krennik.");
+      }
+      if (player.getPosition().equals(map.getSquare(47, 80))) {
+        secQuest = new SecondaryQuest("Get the chems", 300,
+            "Decide whether to help Alistair with his chem request.");
+      }
+
 
       if (gameOver) {
         break;
