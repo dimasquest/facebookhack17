@@ -24,4 +24,8 @@ public final class Attributes {
     public void setAttributeValue(int attributeValue) {
         this.attributeValue = attributeValue;
     }
+
+    public void incrementAttribute(Attributes attribute) {
+        this.attributeValue = attribute.getAttributeValue() + 1;
+    }
 }
