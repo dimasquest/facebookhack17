@@ -1,6 +1,7 @@
 package game;
 
 import Characters.Character;
+import Items.HealthRelated;
 import messages.RaiderStories;
 
 import java.io.IOException;
@@ -18,6 +19,41 @@ public class Combat {
     public Combat(Character player, Character enemy) {
         this.player = player;
         this.enemy = enemy;
+    }
+
+    public void combatActions(Character player, Character enemy) {
+        Scanner user_input = new Scanner(System.in);
+        boolean flag = false;
+            switch (user_input.nextInt()) {
+                case 1:
+                    player.setDamage(10);
+                    System.out.println("You attack");
+                    break;
+                case 2:
+                    System.out.println("Stimpack or Superstimpack? 9/0");
+                    Scanner med = new Scanner(System.in);
+                    if (med.nextInt() == 9) {
+                        try {
+                        player.getHealthBoosters().remove(HealthRelated.Stimpack);
+                            player.addHealth(20);
+                        }
+                        catch (NullPointerException n){
+                            System.out.println("No stimpacks");
+                        }
+                        System.out.println("You used a stimpack and have " +player.getHealthBoosters().size() + " left.");
+                        System.out.println("Your health is : " + player.getHealth());
+                    } else {
+                        player.getHealthBoosters().remove(HealthRelated.Superstimpack);
+                        player.addHealth(50);
+                    }
+                    break;
+                case 3:
+                    player.getArmor().setDefenseRating(0.1);
+                    System.out.println("You defend");
+                    break;
+                default:
+                    break;
+            }
     }
 
     public void setEnemy(Character enemy) {
@@ -59,8 +95,11 @@ public class Combat {
                 System.out.println(enemy.getName() + " caused you " + hisDamage + " damage." +
                         " You have " + player.getHealth()+ " hp remaining.");
             }
-            System.out.println("Press enter to keep fighting:");
-            System.in.read();
+            if (enemy.isAlive()) {
+                System.out.println("Press enter next action: 1 for attack, 2 for healing, 3 for defense");
+                combatActions(player, enemy);
+            }
+
         }
         if (player.isAlive()) {
             System.out.println("You won the battle!");

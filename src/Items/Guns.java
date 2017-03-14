@@ -16,7 +16,7 @@ public enum Guns {
     HEAVY_PISTOL(20, 0.1,"heavy pistol"),
     BIG_IRON(40, 0.02, "big iron");
 
-    private final int damage;
+    private int damage;
     private final double chanceToBrake;
     private final String name;
 
@@ -38,4 +38,5 @@ public enum Guns {
     public String getName() {
         return name;
     }
+
 }

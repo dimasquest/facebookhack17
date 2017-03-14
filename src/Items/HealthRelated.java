@@ -4,7 +4,9 @@ package Items;
  * Created by codiniosifpacuraru on 11/03/2017.
  */
 public enum HealthRelated {
-    Meds (20);
+    Stimpack (20),
+    Superstimpack(50),
+    DamProtector(20);
 
     private final int healthBoosters;
 

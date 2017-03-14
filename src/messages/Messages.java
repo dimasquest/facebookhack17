@@ -15,7 +15,9 @@ public class Messages {
     public Character player;
     public Character enemy;
 
-    public Messages() {
+    public Messages(Character enemy, Character player) {
+        this.enemy = enemy;
+        this.player = player;
     }
 
     public void needHealing(Character player) {

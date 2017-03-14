@@ -34,6 +34,10 @@ public class Character {
         this.attributes = attributes;
         this.guns = guns;
         this.healthBoosters = healthBoosters;
+        this.healthBoosters.add(HealthRelated.Stimpack);
+        this.healthBoosters.add(HealthRelated.Stimpack);
+        this.healthBoosters.add(HealthRelated.Stimpack);
+        this.healthBoosters.add(HealthRelated.Superstimpack);
         this.miscellaneous = miscellaneous;
         this.position = position;
         this.isAlive = true;
@@ -139,5 +143,13 @@ public class Character {
 
     public Armor getArmor() {
         return armor;
+    }
+
+    public void setDamage(int ext) {
+        this.damage += ext;
+    }
+
+    public void addHealth(int add) {
+        this.health += add;
     }
 }

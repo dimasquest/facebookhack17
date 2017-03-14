@@ -4,9 +4,9 @@ package Items;
  * Created by dimarammfire on 12.03.17.
  */
 public enum Armor {
-    LEATHER(0.05, "leather", 0),
-    LIGHT_METAL(0.1, "light metal", 2),
-    HEAVY_METAL(0.3, "heavy metal", 5),
+    LEATHER(0.1, "leather", 0),
+    LIGHT_METAL(0.2, "light metal", 2),
+    HEAVY_METAL(0.35, "heavy metal", 5),
     SCRAP(0.03, "scrap", 0),
     COMBAT_LIGHT(0.15, "light combat", 3),
     COMBAT_HEAVY(0.4, "heavy combat", 6),
@@ -14,7 +14,7 @@ public enum Armor {
     EXOSKELETON(0.8, "exoskeleton", 0);
 
 
-    private final double defenseRating;
+    private double defenseRating;
     private final String name;
     private final int strengthRating;
 
@@ -34,5 +34,9 @@ public enum Armor {
 
     public int getStrengthRating() {
         return strengthRating;
+    }
+
+    public void setDefenseRating(double def) {
+        this.defenseRating = defenseRating+def;
     }
 }

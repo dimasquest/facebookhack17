@@ -34,7 +34,6 @@ public class Main {
         "Press enter to start.");
     Scanner user_input = new Scanner(System.in);
     StartStory story = new StartStory();
-    Messages message = new Messages();
     RaiderStories raiderStories = new RaiderStories();
     Character player;
     int karma = 0;
@@ -299,6 +298,8 @@ public class Main {
     raiderAjax.setGunInHand(Guns.M1);
     raiderAjax.setArmor(EXOSKELETON);
 
+
+
 //
 //
 //
@@ -377,6 +378,7 @@ public class Main {
 
 
 //  HERE IS THE PLAYER
+    Messages message = new Messages(raider2, player);
     player.showAttributes();
     System.in.read();
     map.getSquare(89, 50).setC('*');
@@ -391,7 +393,8 @@ public class Main {
     System.out.println("You are now free to explore the city and the surroundings.\n" +
             "To proceed through the main story you need to complete the Q marks.\n" +
             "To try to obtain better equipment you need to go to ! signs.\n" +
-            "Galon town is about to get destroyed, go save it!\n");
+            "Galon town is about to get destroyed, go save it!\n" +
+            "Please press any of the movement keys: w/a/s/d.");
     player.setHealth(120);
 
     boolean gameOver = false;
