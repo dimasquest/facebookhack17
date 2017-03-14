@@ -35,6 +35,7 @@ public class Main {
     Scanner user_input = new Scanner(System.in);
     StartStory story = new StartStory();
     RaiderStories raiderStories = new RaiderStories();
+    MutantStories mutantStories = new MutantStories();
     Character player;
     int karma = 0;
     int strengthOfTown = 0;
@@ -60,10 +61,13 @@ public class Main {
 
     GameMap map = new GameMap();
     Character sheriff, bartender, hotelManager, priest, child,
-    raider1, raider2, raider3, raider4, raiderJet, raiderScrum, raiderAjax, raiderAstra, raiderBiggy;
+    raider1, raider2, raider3, raider4, raiderJet, raiderScrum, raiderAjax, raiderAstra, raiderBiggy, trapper, controller,
+    warhog, nukeDog;
     char previousChar, nextCharacter;
     MainQuest quest;
     SecondaryQuest secQuest;
+
+    trapper = new Character("Trapper", Jobs.MUTANT, 80, Guns.JAWS, map.getSquare(0,0));
 
 
 
@@ -433,6 +437,9 @@ public class Main {
           position = map.getSquare(position.getX(), position.getY() - 1);
           map.display();
           break;
+        case "heal" : state.heal();
+          System.out.println("You have used a stimpack.");
+          break;
         case "s":
           if (!map.isValidMove(position.getX() + 1, position.getY())) {
             System.out.println("This is not a valid move. Please try another " +
@@ -466,10 +473,9 @@ public class Main {
           break;
         case "x" :
           System.out.println("Your weapon is " + player.getGunInHand() + "\n" +
-                  "and your armor is " + player.getArmor()); break;
-        case "medic" :
-          System.out.println("You spend 300 exp to heal");
-          player.setHealth(110);break;
+                  "and your armor is " + player.getArmor());
+          System.out.println("Your attributes are: ");
+          player.showAttributes();break;
         case "dimas" : player.setHealth(500);
           System.out.println("CHEAT");
         player.setGunInHand(Guns.HECATE); break;
@@ -490,7 +496,6 @@ public class Main {
         combat.attack();
         if (!player.isAlive()) {gameOver = true; break;}
         System.out.println("City is defended, well done!");
-        message.needHealing(player);
         state.levelUp(500);
         strengthOfRaiders--;
         strengthOfTown++;
@@ -569,7 +574,6 @@ public class Main {
                       "alongside with the infiltrators. Sheriff needs to know.");
               strengthOfRaiders--;
               state.levelUp(1000);
-              message.needHealing(player);
             }
             else if (input.equals("c") && player.getAttributes().get(4).getAttributeValue() > 6) {
               System.out.println("Wasn't too hard. They use the church basement to get the illegal goods into the town \n" +
@@ -577,13 +581,11 @@ public class Main {
               strengthOfRaiders--;
               state.levelUp(1000);
               karma++;
-              message.needHealing(player);
             }
             else {
               System.out.println("He decided that a bullet in a head is a better idea than talking, well that's another opportunity missed...");
               strengthOfTown--;
               state.levelUp(1000);
-              message.needHealing(player);
             }
           }
         }
@@ -879,12 +881,9 @@ public class Main {
       if (gameOver) {
         break;
       }
-
-
     }
 
     System.out.println("Thank you for playing! I hope you enjoyed the game!\n" +
             "Made by Irina, Codin and Dima for FacebookHack17.");
   }
-
 }

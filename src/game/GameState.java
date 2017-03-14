@@ -1,6 +1,7 @@
 package game;
 
 import Characters.Character;
+import Items.HealthRelated;
 import map.Square;
 
 /**
@@ -24,5 +25,10 @@ public class GameState {
         else {
             player.getE().setAttributeValue(player.getE().getAttributeValue() + newExp);
         }
+    }
+
+    public void heal() {
+        player.getHealthBoosters().remove(HealthRelated.Stimpack);
+        player.addHealth(20);
     }
 }

@@ -3,6 +3,7 @@ package Characters;
 import Items.*;
 import map.Square;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -151,5 +152,19 @@ public class Character {
 
     public void addHealth(int add) {
         this.health += add;
+    }
+
+    public Character(String name, Jobs jobTitle, int health, Guns gunInHand, Square position) {
+        this.name = name;
+        this.jobTitle = jobTitle;
+        this.health = health;
+        this.gunInHand = gunInHand;
+        this.position = position;
+        this.damage = gunInHand.getDamage();
+        this.armor = Armor.SKIN;
+        this.attributes = new ArrayList<>();
+        this.guns = new ArrayList<>();
+        this.healthBoosters = new ArrayList<>();
+        this.miscellaneous = new ArrayList<>();
     }
 }

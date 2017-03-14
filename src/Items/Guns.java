@@ -14,7 +14,9 @@ public enum Guns {
     HECATE(130, 0.3, "Hecate II"),
     AXE(55, 0, "fireaxe"),
     HEAVY_PISTOL(20, 0.1,"heavy pistol"),
-    BIG_IRON(40, 0.02, "big iron");
+    BIG_IRON(40, 0.02, "big iron"),
+    JAWS(30,0.0, "jaws"),
+    CLAWS(45, 0.0, "claws");
 
     private int damage;
     private final double chanceToBrake;
